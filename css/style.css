@@ -181,7 +181,7 @@ header .container {
 
 /* --- Hero Section --- */
 .hero {
-    background: url('../images/hero.jpg') no-repeat center center/cover; /* 替換為你的圖片 */
+    background: url('../images/BGTOP.jpeg') no-repeat center center/cover; /* 替換為你的圖片 */
     color: var(--white);
     text-align: center;
     padding: 120px 20px;
