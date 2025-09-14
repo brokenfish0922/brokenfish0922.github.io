@@ -1,0 +1,31 @@
+name: Generate Sitemap and Robots
+
+on:
+  push:
+    branches:
+      - main   # 如果你的分支是 master，改成 master
+  workflow_dispatch: # 手動觸發
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate sitemap.xml and robots.txt
+        run: python generate_sitemap.py
+
+      - name: Commit sitemap.xml and robots.txt
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add sitemap.xml robots.txt
+          git commit -m "Auto-update sitemap.xml & robots.txt" || echo "No changes to commit"
+          git push
