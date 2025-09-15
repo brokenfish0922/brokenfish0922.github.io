@@ -1,1 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>はなまるうどん 田町店 - 47制霸中</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome (請自行獲取最新版CDN或本地引入) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+<style>
+/* --- Globals & Variables --- */
+:root {
+    --primary-bg: #F0F8FF; /* AliceBlue - 背景/大面積 */
+    --primary-blue: #ADD8E6; /* LightBlue - 主視覺 */
+    --darker-blue: #87CEEB; /* SkyBlue - 深一點的藍 */
+    --accent-coral: #FF7F50; /* Coral - 點綴色/行動呼籲 */
+    --text-dark: #333333;
+    --text-light: #555555;
+    --border-color: #D3D3D3;
+    --white: #FFFFFF;
+    --card-bg: var(--white);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --border-radius: 8px;
+    --font-primary: 'Open Sans', sans-serif;
+    --font-headings: 'Montserrat', sans-serif;
+}
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.7;
+    color: var(--text-dark);
+    background-color: var(--primary-bg);
+    font-size: 17px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 60px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headings);
+    /* color: var(--darker-blue); */ /* 【修改】移除統一的標題顏色設定，改為在下方分別定義 */
+    margin-bottom: 0.8em;
+    line-height: 1.3;
+}
+
+/* 【修改】為不同層級的標題設定專屬顏色，以增加區別度和對比度 */
+h1 { font-size: 2.8em; color: #3A5F7D; } /* 深藍色，對比度高 */
+h2 { font-size: 2.2em; color: #4682B4; } /* 鋼藍色 (SteelBlue)，清晰且柔和 */
+h3 { font-size: 1.6em; color: #5A9ACF; } /* 較亮的藍色，用於次要標題 */
+h4, h5, h6 { color: #5A9ACF; } /* 為其他較少用的標題統一設定顏色 */
+
+
+p {
+    margin-bottom: 1em;
+    color: var(--text-light);
+}
+
+a {
+    color: var(--accent-coral);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #E57373; /* 深一點的珊瑚色 */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--accent-coral);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #E57373;
+    transform: translateY(-2px);
+    color: var(--white);
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--text-dark);
+}
+.btn-primary:hover {
+    background-color: var(--darker-blue);
+    color: var(--text-dark);
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-headings);
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #4682B4; /* 【修改】將Logo顏色與H2標題統一，提升一致性與對比度 */
+}
+.logo i {
+    margin-right: 8px;
+    color: var(--accent-coral);
+}
+.logo:hover {
+    color: var(--primary-blue);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 25px;
+}
+
+.main-nav a {
+    color: var(--text-dark);
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-coral);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+.main-nav a.active {
+    color: var(--accent-coral);
+}
+
+.nav-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--darker-blue);
+    cursor: pointer;
+}
+
+
+/* --- Hero Section --- */
+.hero {
+    background: url(./images/BGTOP.jpeg) no-repeat center center/cover; /* 替換為你的圖片 */
+    color: var(--white);
+    text-align: center;
+    padding: 120px 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+.hero::before { /* Overlay for better text readability */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(66, 134, 244, 0.3); /* 淺藍色透明遮罩 */
+}
+
+.hero-content {
+    position: relative; /* To be above the overlay */
+    z-index: 1;
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.3em;
+    margin-bottom: 1.5em;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* --- Latest Posts / Posts Grid --- */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.post-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.post-card-image {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Crop image to fit */
+}
+
+.post-card-content {
+    padding: 20px;
+    flex-grow: 1; /* Allows content to fill space, pushing meta to bottom */
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card-category {
+    display: inline-block;
+    background-color: var(--primary-blue);
+    color: var(--text-dark);
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    align-self: flex-start;
+}
+
+.post-card h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+.post-card h3 a {
+    color: var(--text-dark);
+}
+.post-card h3 a:hover {
+    color: var(--accent-coral);
+}
+
+.post-card-excerpt {
+    font-size: 0.95em;
+    color: var(--text-light);
+    flex-grow: 1; /* Pushes meta down if excerpt is short */
+    margin-bottom: 15px;
+}
+
+.post-card-meta {
+    margin-top: auto; /* Pushes to the bottom of the card content */
+    font-size: 0.85em;
+    color: #777;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.post-card-meta .date i {
+    margin-right: 5px;
+    color: var(--primary-blue);
+}
+.post-card-meta .read-more {
+    font-weight: bold;
+    color: var(--accent-coral);
+}
+
+/* --- About Snippet --- */
+.about-snippet-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.about-snippet-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--white);
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--darker-blue);
+    color: var(--primary-bg);
+    padding: 40px 0;
+    text-align: center;
+}
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+.footer-content p {
+    color: var(--primary-bg);
+    margin-bottom: 0;
+}
+
+.social-links a {
+    color: var(--primary-bg);
+    font-size: 1.3em;
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--white);
+    transform: scale(1.2);
+}
+
+#backToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--accent-coral);
+    color: white;
+    cursor: pointer;
+    padding: 12px 15px;
+    border-radius: var(--border-radius);
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, opacity 0.3s;
+}
+#backToTopBtn:hover {
+    background-color: #E57373;
+}
+
+
+/* --- Single Post Page Specifics --- */
+.single-post-content {
+    background-color: var(--white);
+    padding: 30px 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+.post-header {
+    position: static;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+    text-align: center; /* 標題置中 */
+}
+.post-header h1 {
+    color: #3A5F7D; /* 【修改】套用新的 H1 顏色 */
+}
+.post-meta {
+    font-size: 0.9em;
+    color: var(--text-light);
+    display: flex; /* 使用 flexbox 排列 */
+    justify-content: center; /* 水平置中 */
+    flex-wrap: wrap; /* 允許換行 */
+    gap: 5px 15px; /* 設定間距 */
+}
+.post-meta span {
+    margin-right: 0; /* 移除原本的 margin */
+}
+.post-meta i {
+    margin-right: 5px;
+    color: var(--primary-blue);
+}
+.featured-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.entry-content h2 {
+    color: #4682B4; /* 【修改】套用新的 H2 顏色 */
+    margin-top: 1.5em;
+}
+.entry-content figure {
+    margin: 20px 0;
+    text-align: center;
+}
+.entry-content figcaption {
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-top: 8px; /* 增加圖片與說明的間距 */
+    font-style: italic;
+}
+.entry-content blockquote {
+    border-left: 4px solid var(--primary-blue);
+    padding-left: 20px;
+    margin: 20px 0;
+    font-style: italic;
+    color: var(--text-light);
+}
+.entry-content blockquote p {
+    margin-bottom: 0;
+}
+.post-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+.social-share span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+.social-share a {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+/* --- Comments Section (Basic Styling) --- */
+.comments-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px dashed var(--border-color);
+}
+.comment-form div {
+    margin-bottom: 15px;
+}
+.comment-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: var(--font-primary);
+}
+.comment-form textarea {
+    resize: vertical;
+}
+
+/* --- Gallery Page --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.gallery-item img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* --- Contact Page --- */
+.contact-form-container, .contact-info {
+    background: var(--white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 30px;
+}
+.contact-info h3 {
+    margin-top: 0;
+}
+.contact-info p {
+    margin-bottom: 10px;
+}
+.contact-info i {
+    margin-right: 10px;
+    color: var(--primary-blue);
+    width: 20px; /* for alignment */
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .hero h1 { font-size: 2.8em; }
+    .hero p { font-size: 1.1em; }
+    .about-snippet-content { flex-direction: column; text-align: center; }
+    .about-snippet-image { margin-bottom: 20px; }
+}
+
+@media (max-width: 768px) {
+    .main-nav ul {
+        display: none; /* Hidden by default on mobile */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        background-color: var(--white);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 10px 0;
+    }
+    .main-nav ul.nav-active {
+        display: flex; /* Show when active */
+    }
+    .main-nav li {
+        margin: 10px 20px;
+        text-align: center;
+    }
+    .main-nav a::after { display: none; } /* Remove underline animation on mobile */
+    .nav-toggle {
+        display: block; /* Show burger icon */
+    }
+
+    .hero h1 { font-size: 2.2em; }
+    .hero { padding: 80px 20px; min-height: 50vh;}
+    .posts-grid { grid-template-columns: 1fr; /* Stack cards */ }
+    
+    .single-post-content { padding: 20px; }
+    .post-header h1 { font-size: 1.8em; }
+    
+    .footer-content { flex-direction: column; }
+    .social-links { margin-top: 15px; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.8em; }
+    .hero h1 { font-size: 1.8em; }
+    .hero p { font-size: 1em; }
+    .btn { padding: 10px 20px; font-size: 0.9em; }
+}
+
+/* --- 新增店家評論頁樣式 --- */
+.post-subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-light);
+    margin-top: -0.8em;
+    margin-bottom: 1.5em;
+}
+
+.rating-box {
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--accent-coral);
+    background-color: #fffaf0; /* FloralWhite */
+    padding: 15px;
+    border-radius: var(--border-radius);
+    border: 2px solid #FFDAB9; /* PeachPuff */
+    margin: 1em auto 2.5em auto;
+    max-width: 300px;
+}
+
+.store-info {
+    background-color: #f8f9fa;
+    border-left: 5px solid var(--primary-blue);
+    border-radius: var(--border-radius);
+    padding: 20px 25px;
+    margin-top: 2.5em;
+}
+
+.store-info h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #4682B4; 
+}
+
+.store-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.store-info li {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    line-height: 1.6;
+}
+
+.store-info li:last-child {
+    margin-bottom: 0;
+}
+
+.store-info li i {
+    color: var(--darker-blue);
+    font-size: 1.2em;
+    margin-right: 15px;
+    width: 25px;
+    text-align: center;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-map-signs"></i> 47制霸中
+            </a>
+            <nav class="main-nav">
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul>
+                    <li><a href="index.html" class="active">首頁</a></li>
+                    <li><a href="blog.html">所有文章</a></li>
+                    <li><a href="about.html">關於我</a></li>
+                    <li><a href="contact.html">聯絡我</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<main class="container section-padding">
+    <article class="single-post-content">
+        <header class="post-header">
+            <h1>はなまるうどん 田町店</h1>
+            <p class="post-subtitle"><em>hanamaru udon</em></p>
+            <div class="post-meta">
+                <span><i class="far fa-calendar-alt"></i> 2025年9月15日</span>
+                <span><i class="fas fa-user"></i> 破魚</span>
+                <span><i class="fas fa-folder-open"></i> <a href="#">日本</a></span>
+                <span><i class="fas fa-tags"></i> <a href="#">香川</a>, <a href="#">美食</a>, <a href="#">烏龍麵</a></span>
+            </div>
+        </header>
+
+        <div class="entry-content">
+
+            <div class="rating-box">
+                綜合評價：⭐⭐⭐⭐⭐
+            </div>
+
+            <figure>
+                <img src="image2025/food02/01.jpg" alt="竹簍烏龍麵與關東煮">
+                <figcaption>竹簍烏龍麵 (ざるうどん) 、關東煮</figcaption>
+            </figure>
+            
+            <figure>
+                <img src="image2025/food02/02.jpg" alt="竹簍烏龍麵與關東煮">
+                <figcaption>竹簍烏龍麵 (ざるうどん) 、關東煮</figcaption>
+            </figure>
+
+            <figure>
+                <img src="image2025/food02/03.jpg" alt="冷湯烏龍麵與關東煮">
+                <figcaption>冷湯烏龍麵(冷かけ) 、關東煮</figcaption>
+            </figure>
+
+            <figure>
+                <img src="image2025/food02/04.jpg" alt="薩摩芋與可樂餅">
+                <figcaption>薩摩芋、可樂餅</figcaption>
+            </figure>
+            
+            <p>這間店的麵條非常有咬勁且Q彈，醬汁鮮美帶甘甜，炸物酥脆不油膩，關東煮入味不死鹹，用餐環境非常乾淨寬闊，綜合比較之下是最出色的一間店。</p>
+            
+            <hr style="margin: 2.5em 0; border: 0; border-top: 1px solid var(--border-color);">
+
+            <div class="store-info">
+                <h3>店家資訊</h3>
+                <ul>
+                    <li><i class="fas fa-store"></i><strong>店名：</strong> はなまるうどん 田町店</li>
+                    <li><i class="fas fa-map-marker-alt"></i><strong>地址：</strong> 香川県高松市田町14-5</li>
+                    <li><i class="fas fa-phone"></i><strong>電話：</strong> 087-812-5512</li>
+                </ul>
+            </div>
+            
+        </div>
+
+    </article>
+
+</main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 47制霸中. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/brokenfish7/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/brokenfish7?igsh=MTg4bDdlM21pcTNsbQ==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <button id="backToTopBtn" title="回到頂部"><i class="fas fa-arrow-up"></i></button>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
