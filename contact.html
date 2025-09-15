@@ -21,11 +21,12 @@
         }
 
         .contact-avatar {
-            width: 180px;  /* 調整頭像大小 */
+            width: 180px;
             height: 180px;
-            border-radius: 50%; /* 圓形 */
+            border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 25px;
+            /* 【修改】使用 margin auto 來達成水平置中 */
+            margin: 0 auto 25px;
             border: 6px solid var(--white);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
@@ -101,7 +102,7 @@
                     <li><a href="contact.html" class="active">聯絡我</a></li>
                 </ul>
             </nav>
-        }
+        
     </header>
 
     <main class="container section-padding">
