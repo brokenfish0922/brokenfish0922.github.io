@@ -1,4 +1,4 @@
-const API_URL = "你的 Google Apps Script 網址"; 
+const API_URL = "https://script.google.com/macros/s/AKfycbx4MDziXG5E6VSOa8vvjpEU_7tJRbaU57i3GpzgCCvAon5tTYibL3HETv3h9FD6om55eg/exec"; 
 const PAGE_ID = window.location.pathname;  // 以網址路徑當成頁面ID
 
 async function loadComments() {
