@@ -33,20 +33,45 @@ const commentList = document.getElementById("commentList");
 if (commentForm) {
   commentForm.addEventListener("submit", async e => {
     e.preventDefault();
-    let name = document.getElementById("name").value;
-    let message = document.getElementById("message").value;
 
-    await fetch(API_URL, {
-      method: "POST",
-      body: JSON.stringify({
-        page: PAGE_ID,
-        name,
-        message
-      })
-    });
+    // 【建議】增加按鈕禁用功能，防止重複提交
+    const submitButton = commentForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = '傳送中...';
 
-    document.getElementById("message").value = "";
-    loadComments();
+    const name = document.getElementById("name").value;
+    const message = document.getElementById("message").value;
+
+    // 【建議】使用 try...catch 來捕捉錯誤
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          page: PAGE_ID,
+          name,
+          message
+        })
+      });
+
+      // 檢查回應是否成功
+      if (!response.ok) {
+        // 如果伺服器回傳錯誤 (例如 500)，就拋出錯誤
+        throw new Error(`伺服器錯誤: ${response.statusText}`);
+      }
+
+      document.getElementById("name").value = ""; // 成功後也清空名字
+      document.getElementById("message").value = "";
+      loadComments();
+
+    } catch (error) {
+      // 如果 fetch 過程出錯 (網路問題或上面拋出的錯誤)
+      console.error("提交留言失敗:", error);
+      alert("抱歉，留言送出失敗，請稍後再試。"); // 提示使用者
+    } finally {
+      // 無論成功或失敗，最後都恢復按鈕的狀態
+      submitButton.disabled = false;
+      submitButton.textContent = '送出留言';
+    }
   });
 }
 
