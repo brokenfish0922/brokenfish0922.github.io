@@ -1,65 +1,41 @@
-document.addEventListener('DOMContentLoaded', function() {
+const API_URL = "你的 Google Apps Script 網址"; 
+const PAGE_ID = window.location.pathname;  // 以網址路徑當成頁面ID
 
-    // Mobile Navigation Toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const mainNavUl = document.querySelector('.main-nav ul');
+async function loadComments() {
+  let res = await fetch(`${API_URL}?page=${encodeURIComponent(PAGE_ID)}`);
+  let comments = await res.json();
+  let list = document.getElementById("commentList");
+  list.innerHTML = "";
+  comments.reverse().forEach(c => {
+    let card = document.createElement("div");
+    card.className = "comment-card";
+    card.innerHTML = `
+      <div class="comment-header">
+        ${c.name}
+        <span class="comment-time">${new Date(c.time).toLocaleString()}</span>
+      </div>
+      <div class="comment-message">${c.message}</div>
+    `;
+    list.appendChild(card);
+  });
+}
 
-    if (navToggle && mainNavUl) {
-        navToggle.addEventListener('click', () => {
-            mainNavUl.classList.toggle('nav-active');
-            // Optional: Change burger icon to 'X'
-            const icon = navToggle.querySelector('i');
-            if (mainNavUl.classList.contains('nav-active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    }
+document.getElementById("commentForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  let name = document.getElementById("name").value;
+  let message = document.getElementById("message").value;
 
-    // Back to Top Button
-    const backToTopButton = document.getElementById("backToTopBtn");
+  await fetch(API_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      page: PAGE_ID,  // 🔹 存入頁面ID
+      name,
+      message
+    })
+  });
 
-    if (backToTopButton) {
-        window.onscroll = function() {
-            scrollFunction();
-        };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                backToTopButton.style.display = "block";
-                backToTopButton.style.opacity = "1";
-            } else {
-                backToTopButton.style.opacity = "0";
-                // Wait for transition to finish before hiding
-                setTimeout(() => {
-                    if (!(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)) {
-                         backToTopButton.style.display = "none";
-                    }
-                }, 300); // Corresponds to opacity transition time
-            }
-        }
-
-        backToTopButton.addEventListener('click', function() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        });
-    }
-
-    // Optional: Add active class to current nav link (simple version based on URL)
-    const navLinks = document.querySelectorAll('.main-nav a');
-    const currentPath = window.location.pathname.split("/").pop() || 'index.html';
-
-    navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href').split("/").pop() || 'index.html';
-        if (linkPath === currentPath) {
-            // Remove active class from all first
-            navLinks.forEach(l => l.classList.remove('active'));
-            // Add to current
-            link.classList.add('active');
-        }
-    });
-
+  document.getElementById("message").value = "";
+  loadComments();
 });
+
+loadComments();
