@@ -39,3 +39,42 @@ document.getElementById("commentForm").addEventListener("submit", async e => {
 });
 
 loadComments();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.querySelector('.nav-toggle');
+    const mainNavUl = document.querySelector('.main-nav ul');
+
+    if (navToggle && mainNavUl) {
+        navToggle.addEventListener('click', () => {
+            mainNavUl.classList.toggle('nav-active');
+        });
+
+        // 可選：點擊選單項目後自動關閉選單
+        mainNavUl.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNavUl.classList.contains('nav-active')) {
+                    mainNavUl.classList.remove('nav-active');
+                }
+            });
+        });
+    }
+
+    // 回到頂部按鈕的 JavaScript (如果你還沒有的話)
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // 當捲動超過 300px 時顯示按鈕
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
