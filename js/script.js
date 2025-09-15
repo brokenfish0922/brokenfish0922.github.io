@@ -1,6 +1,6 @@
 // --- 這是您修改後的 script.js ---
 
-const API_URL = "https://script.google.com/macros/s/AKfycbx4MDziXG5E6VSOa8vvjpEU_7tJRbaU57i3GpzgCCvAon5tTYibL3HETv3h9FD6om55eg/exec"; 
+const API_URL = "https://script.google.com/macros/s/AKfycbzXJxZOxfkPEKolBggkYrcM5HFGZQQ98GgasZUE1UEhOj6wHvNBU4jCpuFpIwk8UVaM_Q/exec"; 
 const PAGE_ID = window.location.pathname;
 
 async function loadComments() {
