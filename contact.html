@@ -3,18 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>47制霸中 - 我的旅遊部落格</title>
+    <title>聯絡我 - 47制霸中</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome (請自行獲取最新版CDN或本地引入) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 沿用您原本的 CSS 檔案 -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* --- 聯絡我頁面專屬樣式 --- */
+        .contact-me-container {
+            background-color: var(--white);
+            padding: 50px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            text-align: center; /* 讓內部所有元素置中 */
+        }
+
+        .contact-avatar {
+            width: 180px;  /* 調整頭像大小 */
+            height: 180px;
+            border-radius: 50%; /* 圓形 */
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 6px solid var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-title {
+            font-family: var(--font-headings);
+            font-size: 2.5em; /* 使用大字體 */
+            color: #3A5F7D;   /* 沿用 H1 標題顏色 */
+            margin-bottom: 20px;
+        }
+
+        .email-block {
+            background-color: var(--primary-bg); /* 使用背景淡藍色 */
+            border: 1px solid var(--primary-blue); /* 使用主視覺藍色邊框 */
+            border-radius: var(--border-radius);
+            padding: 20px 35px;
+            margin-top: 10px;
+            display: inline-block; /* 讓區塊寬度隨內容變化，但仍可設定內距 */
+            transition: all 0.3s ease;
+        }
+
+        .email-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+
+        .email-link {
+            font-family: var(--font-primary);
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--accent-coral); /* 沿用強調色 */
+            text-decoration: none;
+        }
+
+        .email-link i {
+            margin-right: 12px; /* 圖示與文字的間距 */
+        }
+
+        .email-link:hover {
+            color: #E57373; /* 滑鼠懸停時的顏色 */
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 768px) {
+            .contact-title {
+                font-size: 2em;
+            }
+            .contact-avatar {
+                width: 150px;
+                height: 150px;
+            }
+            .email-link {
+                font-size: 1.1em;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <a href="index.html" class="logo">
-                <!-- 可替換為圖片 Logo: <img src="images/logo.png" alt="Logo"> -->
                 <i class="fas fa-map-signs"></i> 47制霸中
             </a>
             <nav class="main-nav">
@@ -22,98 +94,42 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <ul>
-                    <li><a href="index.html" class="active">首頁</a></li>
+                    <li><a href="index.html">首頁</a></li>
                     <li><a href="blog.html">所有文章</a></li>
-              <!--      <li><a href="gallery.html">照片牆</a></li>  -->
                     <li><a href="about.html">關於我</a></li>
-                    <li><a href="contact.html">聯絡我</a></li>
+                    <!-- 將 active class 移到 "聯絡我" -->
+                    <li><a href="contact.html" class="active">聯絡我</a></li>
                 </ul>
             </nav>
-        </div>
+        }
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>探索日本的美食與風景</h1>
-                <p>用鏡頭和文字，記錄每一段旅程的感動。</p>
-                <a href="blog.html" class="btn btn-primary">開始閱讀</a>
+    <main class="container section-padding">
+        <!-- 聯絡我頁面主要內容區塊 -->
+        <div class="contact-me-container">
+
+            <!-- 1. 請將 src="..." 替換成您的頭像圖片路徑 -->
+            <img src="https://via.placeholder.com/180" alt="我的頭像" class="contact-avatar">
+
+            <!-- 2. 大字體標題 -->
+            <h2 class="contact-title">我的電子郵件</h2>
+
+            <!-- 3. 獨立的電子郵件區塊 -->
+            <div class="email-block">
+                <!-- 4. 請將 mailto: 和顯示的文字都換成您的 Email -->
+                <a href="mailto:brokenfish7@gmail.com" class="email-link">
+                    <i class="far fa-envelope"></i>
+                    brokenfish7@gmail.com
+                </a>
             </div>
-        </section>
 
-        <!-- Latest Posts Section -->
-   <!--     <section class="latest-posts container section-padding">
-            <h2>最新文章</h2>
-            <div class="posts-grid"> -->
-                <!-- Post Card 1 -->
-           <!--     <article class="post-card">
-                    <a href="single-post.html">
-                        <img src="images/post-thumb1.jpg" alt="文章縮圖1" class="post-card-image">
-                    </a>
-                    <div class="post-card-content">
-                        <span class="post-card-category">歐洲</span>
-                        <h3><a href="single-post.html">漫步巴黎：艾菲爾鐵塔下的浪漫時光</a></h3>
-                        <p class="post-card-excerpt">在塞納河畔感受微風，品嚐法式可麗餅，巴黎的魅力...</p>
-                        <div class="post-card-meta">
-                            <span class="date"><i class="far fa-calendar-alt"></i> 2023年10月26日</span>
-                            <a href="single-post.html" class="read-more">閱讀更多 &rarr;</a>
-                        </div>
-                    </div>
-                </article>  -->
-
-                <!-- Post Card 2 (重複結構) -->
-            <!--    <article class="post-card">
-                    <a href="single-post.html">
-                        <img src="images/post-thumb2.jpg" alt="文章縮圖2" class="post-card-image">
-                    </a>
-                    <div class="post-card-content">
-                        <span class="post-card-category">亞洲</span>
-                        <h3><a href="single-post.html">京都古寺巡禮：禪意與紅葉的交織</a></h3>
-                        <p class="post-card-excerpt">清水寺的壯麗，金閣寺的輝煌，嵐山的竹林秘境...</p>
-                        <div class="post-card-meta">
-                            <span class="date"><i class="far fa-calendar-alt"></i> 2023年09月15日</span>
-                            <a href="single-post.html" class="read-more">閱讀更多 &rarr;</a>
-                        </div>
-                    </div>
-                </article> -->
-
-                <!-- Post Card 3 (重複結構) -->
-            <!--    <article class="post-card">
-                    <a href="single-post.html">
-                        <img src="images/post-thumb3.jpg" alt="文章縮圖3" class="post-card-image">
-                    </a>
-                    <div class="post-card-content">
-                        <span class="post-card-category">國內旅遊</span>
-                        <h3><a href="single-post.html">花東海岸線：太平洋的風與蔚藍</a></h3>
-                        <p class="post-card-excerpt">騎行在台11線，感受海風的吹拂，探訪美麗的東海岸...</p>
-                        <div class="post-card-meta">
-                            <span class="date"><i class="far fa-calendar-alt"></i> 2023年08月02日</span>
-                            <a href="single-post.html" class="read-more">閱讀更多 &rarr;</a>
-                        </div>
-                    </div>
-                </article>  -->
-            </div>
-        </section>
-
-        <!-- Optional: About Me Snippet -->
-        <section class="about-snippet section-padding" style="background-color: #E0F2F7;">
-            <div class="container about-snippet-content">
-                <img src="images/阿爸Q版頭像（去背).png" alt="關於我照片" class="about-snippet-image">
-                <div>
-                    <h2>關於作者</h2>
-                    <p>嗨！我是破魚，熱愛用鏡頭捕捉瞬間、用文字分享日本旅遊心得。歡迎來到我的小天地，一起探索日本的美好！</p>
-                    <a href="about.html" class="btn">了解更多</a>
-                </div>
-            </div>
-        </section>
-
+        </div>
     </main>
 
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 47制霸中. All Rights Reserved.</p>
+                <p>© 2025 47制霸中. All Rights Reserved.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/brokenfish7/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/brokenfish7?igsh=MTg4bDdlM21pcTNsbQ==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -124,6 +140,7 @@
         </div>
     </footer>
 
+    <!-- 您的 JavaScript 檔案 -->
     <script src="js/script.js"></script>
 </body>
 </html>
