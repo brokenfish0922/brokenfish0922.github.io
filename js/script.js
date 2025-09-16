@@ -142,58 +142,58 @@ const navigationData = {
         ]
     },
     'category-taimeshi': { // 您可以為其他分類建立新的項目
-        name: '另一個美食分類',
+        name: '愛媛鯛魚飯',
         listUrl: 'category-taimeshi.html',
         posts: [
-            { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-            { title: '讚岐烏龍麵種類簡介', url: 'kadoya.html' }
+            { title: '松山鯛魚飯 秋嘉 本店', url: 'akiyoshi.html' },
+            { title: 'かどや 道後椿坂店', url: 'kadoya.html' }
         ]
     }
     'category-local-food': { // 您可以為其他分類建立新的項目
-        name: '另一個美食分類',
+        name: '在地美食',
         listUrl: 'category-local-food.html',
         posts: [
-            { title: '讚岐烏龍麵種類簡介', url: 'goichi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'miyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'donburiya.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'maishokuya.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'menou.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'gyozanoosho.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'yoridorimidori.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'setoyoshi.html' }
+            { title: '唐揚げ食堂 ごいち 本店', url: 'goichi.html' },
+          { title: '広島風 お好焼き みよし 駅前店', url: 'miyoshi.html' },
+          { title: 'ドン☆ぶり屋', url: 'donburiya.html' },
+          { title: '香川の食堂 まいしょく家 兵庫町店', url: 'maishokuya.html' },
+          { title: '徳島ラーメン麺王 高松駅前店', url: 'menou.html' },
+          { title: '餃子の王将 高松南新町店', url: 'gyozanoosho.html' },
+          { title: '骨付鳥-寄鳥味鳥', url: 'yoridorimidori.html' },
+          { title: '瀬戸よ志', url: 'setoyoshi.html' }
         ]
     }    
     'category-coffee': { // 您可以為其他分類建立新的項目
-        name: '另一個美食分類',
+        name: '咖啡與甜點',
         listUrl: 'category-coffee.html',
         posts: [
-            { title: '讚岐烏龍麵種類簡介', url: 'umie.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'minami.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'shirasagi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'wordsworth.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'komeda.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'kuguri.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'shodosimaice.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'setouchigelatomare.html' }
+            { title: 'umie', url: 'umie.html' },
+          { title: '南珈琲店', url: 'minami.html' },
+          { title: '白鷺珈琲', url: 'shirasagi.html' },
+          { title: 'The Garden of Wordsworth', url: 'wordsworth.html' },
+          { title: '客美多(コメダ)珈琲店 松山山西店', url: 'komeda.html' },
+          { title: 'Cafe Kuguri', url: 'kuguri.html' },
+          { title: '小豆島橄欖霜淇淋', url: 'shodosimaice.html' },
+          { title: '瀬戸内ジェラート MARE', url: 'setouchigelatomare.html' }
         ]
     }    
     'category-spot-food': { // 您可以為其他分類建立新的項目
-        name: '另一個美食分類',
+        name: '觀光景點區美食',
         listUrl: 'category-spot-food.html',
         posts: [
-            { title: '讚岐烏龍麵種類簡介', url: 'karari.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'ehimescience.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'kitchensetouchi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'emifullmasaki.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'dogoonsen.html.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'yatai.html.html' }
+            { title: '道の駅 内子フレッシュパークからり', url: 'karari.html' },
+          { title: '愛媛県総合科学博物館餐廳', url: 'ehimescience.html' },
+          { title: '四國水族館-kitchen setouchi', url: 'kitchensetouchi.html' },
+          { title: 'エミフル MASAKI美食街', url: 'emifullmasaki.html' },
+          { title: '道後溫泉商店街美食', url: 'dogoonsen.html.html' },
+          { title: '讚岐高松祭屋台', url: 'yatai.html.html' }
         ]
     }    
-    'another-category': { // 您可以為其他分類建立新的項目
-        name: '另一個美食分類',
-        listUrl: 'category-another.html',
+    'okasi': { // 您可以為其他分類建立新的項目
+        name: '零食大集合',
+        listUrl: 'okasi.html',
         posts: [
-           { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' }
+           { title: '零食大集合', url: 'okasi.html' }
         ]
     }
 };
