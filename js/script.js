@@ -118,3 +118,157 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// --- 文末導覽區塊程式碼 ---
+
+// 這是您的「文章資料庫」，您未來新增文章時需要手動在此更新。
+const navigationData = {
+    // 這裡的 'shikoku-udon' 必須和您在 HTML 的 data-category-id 中設定的字串完全相同
+    'category-shikoku-udon': { 
+        name: '讚岐烏龍麵巡禮', // 分類名稱，會顯示在按鈕上
+        listUrl: 'category-shikoku-udon.html', // 這個分類的列表頁面 URL
+        // 請依照您希望的閱讀順序，在此處排列文章
+        posts: [
+            { title: '讚岐烏龍麵種類簡介', url: 'udontype.html' },
+            { title: 'はなまるうどん 田町店', url: 'hanamaruudon.html' },
+            { title: '讚岐烏龍麵 めりけんや高松駅前店', url: 'Merikenya.html' },
+            { title: 'はやし家製麺所　高松空港店', url: 'HayashiSeimenjo.html' },
+            { title: 'さか枝うどん 南新町店', url: 'Sakaeda.html' },
+          { title: '宮川製麵所', url: 'Mikakawa.html' },
+          { title: 'さぬき麺業　高松空港店', url: 'SanukiMengyo.html' },
+          { title: '手打烏龍麵 味庄', url: 'AjiSho.html' },
+          { title: '小豆島渡輪-烏龍麵', url: 'ShodoshimaFerry.html' }
+            // ...未來請繼續在此加入同分類的其他文章...
+        ]
+    },
+    'category-taimeshi': { // 您可以為其他分類建立新的項目
+        name: '另一個美食分類',
+        listUrl: 'category-another.html',
+        posts: [
+            { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+            { title: '讚岐烏龍麵種類簡介', url: 'kadoya.html' }
+        ]
+    }
+    'category-local-food': { // 您可以為其他分類建立新的項目
+        name: '另一個美食分類',
+        listUrl: 'category-another.html',
+        posts: [
+            { title: '讚岐烏龍麵種類簡介', url: 'goichi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'miyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'donburiya.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'maishokuya.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'menou.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'gyozanoosho.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'yoridorimidori.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'setoyoshi.html' }
+        ]
+    }    
+    'another-category': { // 您可以為其他分類建立新的項目
+        name: '另一個美食分類',
+        listUrl: 'category-another.html',
+        posts: [
+            { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' }
+        ]
+    }    
+    'another-category': { // 您可以為其他分類建立新的項目
+        name: '另一個美食分類',
+        listUrl: 'category-another.html',
+        posts: [
+            { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' }
+        ]
+    }    
+    'another-category': { // 您可以為其他分類建立新的項目
+        name: '另一個美食分類',
+        listUrl: 'category-another.html',
+        posts: [
+           { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' }
+        ]
+    }
+};
+
+/**
+ * 根據頁面上的 data 屬性，生成「上一篇/下一篇」及「返回列表」的導覽區塊
+ */
+function generatePostNavigation() {
+    const article = document.querySelector('article.single-post-content');
+    const navContainer = document.querySelector('.post-navigation');
+
+    // 如果頁面上找不到必要的元素，就直接結束，避免錯誤
+    if (!article || !navContainer) return;
+
+    const categoryId = article.dataset.categoryId;
+    const postId = article.dataset.postId;
+
+    // 如果文章沒有設定 categoryId 或 postId，也結束
+    if (!categoryId || !postId) return;
+
+    const category = navigationData[categoryId];
+    // 如果在 navigationData 中找不到對應的分類，也結束
+    if (!category) return;
+
+    // 在分類的文章列表中，找到目前這篇文章是第幾個
+    const currentPostIndex = category.posts.findIndex(post => post.url === postId);
+    if (currentPostIndex === -1) return;
+
+    // 取得上一篇和下一篇文章的資料
+    const prevPost = category.posts[currentPostIndex - 1];
+    const nextPost = category.posts[currentPostIndex + 1];
+
+    // --- 開始產生 HTML ---
+
+    let prevLinkHTML = '<div class="nav-previous"></div>'; // 預設為空
+    if (prevPost) {
+        prevLinkHTML = `
+            <div class="nav-previous">
+                <a href="${prevPost.url}" rel="prev">
+                    <span class="nav-title"><i class="fas fa-arrow-left"></i> 上一篇</span>
+                    <span class="post-title">${prevPost.title}</span>
+                </a>
+            </div>
+        `;
+    }
+
+    let nextLinkHTML = '<div class="nav-next"></div>'; // 預設為空
+    if (nextPost) {
+        nextLinkHTML = `
+            <div class="nav-next">
+                <a href="${nextPost.url}" rel="next">
+                    <span class="nav-title">下一篇 <i class="fas fa-arrow-right"></i></span>
+                    <span class="post-title">${nextPost.title}</span>
+                </a>
+            </div>
+        `;
+    }
+
+    const backToListHTML = `
+        <div class="nav-back-to-list">
+            <a href="${category.listUrl}">
+                <i class="fas fa-list-ul"></i> 返回 [${category.name}] 完整列表
+            </a>
+        </div>
+    `;
+
+    // 將組合好的 HTML 放入導覽區塊容器中
+    navContainer.innerHTML = `
+        <div class="nav-links">
+            ${prevLinkHTML}
+            ${nextLinkHTML}
+        </div>
+        ${backToListHTML}
+    `;
+}
+
+// 在網頁的 DOM 結構都載入完成後，執行我們的導覽生成函式
+document.addEventListener('DOMContentLoaded', generatePostNavigation);
