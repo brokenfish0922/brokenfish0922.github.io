@@ -386,6 +386,7 @@ footer {
     margin-bottom: 30px;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 20px;
+    text-align: center; /* 標題置中 */
 }
 .post-header h1 {
     color: #3A5F7D; /* 【修改】套用新的 H1 顏色 */
@@ -393,9 +394,13 @@ footer {
 .post-meta {
     font-size: 0.9em;
     color: var(--text-light);
+    display: flex; /* 使用 flexbox 排列 */
+    justify-content: center; /* 水平置中 */
+    flex-wrap: wrap; /* 允許換行 */
+    gap: 5px 15px; /* 設定間距 */
 }
 .post-meta span {
-    margin-right: 15px;
+    margin-right: 0;
 }
 .post-meta i {
     margin-right: 5px;
@@ -420,7 +425,7 @@ footer {
 .entry-content figcaption {
     font-size: 0.9em;
     color: var(--text-light);
-    margin-top: 5px;
+    margin-top: 8px;
     font-style: italic;
 }
 .entry-content blockquote {
@@ -445,6 +450,80 @@ footer {
 .social-share a {
     font-size: 1.5em;
     margin-right: 10px;
+}
+/* --- Store Review Page Specifics --- */
+.post-subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-light);
+    margin-top: -0.8em;
+    margin-bottom: 1.5em;
+}
+
+.rating-box {
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--accent-coral);
+    background-color: #fffaf0; /* FloralWhite */
+    padding: 15px;
+    border-radius: var(--border-radius);
+    border: 2px solid #FFDAB9; /* PeachPuff */
+    margin: 1em auto 2.5em auto;
+    max-width: 300px;
+}
+    
+.review-summary {
+    background-color: #eef3f8; /* 淡藍色背景，與主題呼應 */
+    border-left: 5px solid var(--darker-blue); /* 左側有重點色塊 */
+    padding: 20px 25px; /* 增加內部間距 */
+    margin: 2.5em 0; /* 增加與上下元素的間距 */
+    border-radius: var(--border-radius);
+    font-size: 1.05em; /* 稍微放大字體 */
+    line-height: 1.8; /* 增加行高，提升可讀性 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 輕微陰影增加立體感 */
+}
+    
+.store-info {
+    background-color: #f8f9fa;
+    border-left: 5px solid var(--primary-blue);
+    border-radius: var(--border-radius);
+    padding: 20px 25px;
+    margin-top: 2.5em;
+}
+
+.store-info h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #4682B4; 
+}
+
+.store-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.store-info li {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    line-height: 1.6;
+}
+
+.store-info li:last-child {
+    margin-bottom: 0;
+}
+
+.store-info li i {
+    color: var(--darker-blue);
+    font-size: 1.2em;
+    margin-right: 15px;
+    width: 25px;
+    text-align: center;
 }
 
 /* --- Comments Section (Basic Styling) --- */
