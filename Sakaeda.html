@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>さか枝うどん 南新町店 - 47制霸中</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome (請自行獲取最新版CDN或本地引入) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+.ratings {
+position: relative;
+vertical-align: middle;
+display: inline-block;
+color: #ddd; /*背景星星顏色*/
+overflow: hidden;
+font-size: 40px; /*調整字體大小可放大縮小星星*/
+text-shadow: 0px 1px 0 #999;
+}
+.full_star {
+width: 90%; /*調整寬度可變更星等*/
+position: absolute;
+left: 0;
+top: 0;
+white-space: nowrap;
+overflow: hidden;
+color: #ebde33; /*前景星星顏色*/
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-map-signs"></i> 47制霸中
+            </a>
+            <nav class="main-nav">
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="blog.html"  class="active">所有文章</a></li>
+                    <li><a href="about.html">關於我</a></li>
+                    <li><a href="contact.html">聯絡我</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<main class="container section-padding">
+    <article class="single-post-content">
+        <header class="post-header">
+            <h1>さか枝うどん 南新町店</h1>
+            <p class="post-subtitle"><em>Sakaeda Udon Minamishinmachiten</em></p>
+            <div class="post-meta">
+                <span><i class="far fa-calendar-alt"></i> 2025年9月16日</span>
+                <span><i class="fas fa-user"></i> 破魚</span>
+                <span><i class="fas fa-folder-open"></i> <a href="#">日本</a></span>
+                <span><i class="fas fa-tags"></i> <a href="#">香川</a>, <a href="#">美食</a>, <a href="#">烏龍麵</a></span>
+            </div>
+        </header>
+
+        <div class="entry-content">
+            <br>
+            <div class="rating-box">
+                綜合評價：
+            <div class="ratings">
+            <div class="empty_star">★★★★★</div>
+            <div class="full_star">★★★★★</div>
+            </div>
+            </div>
+            <p class="review-summary">這間店位於高松中央商店街內，店內座位很多，但隨時處於客滿的狀態，還好翻桌率高，不用排很久就吃的到。<br>這次除了皮哥點的牛肉烏龍乾麵以外，我們還點了夏季限定的德島柑橘烏龍冷麵，這間店的麵條同樣Q彈有嚼勁，牛肉鹹香滋味好，而柑橘烏龍冷麵的湯底包含了酸甜鹹，合在一起卻完全不唐突，讓人非常驚豔，在炎熱的夏天吃上一碗非常令人清爽。<br>炸物中規中矩，其中的兩種炸魚非常不錯。</p>
+            
+            <figure>
+                <img src="image2025/food05/01.jpg" alt="柑橘烏龍冷麵(すだちうどん)+豆皮">
+                <figcaption>柑橘烏龍冷麵(すだちうどん)、豆皮</figcaption>
+            </figure>
+            <br><br>
+            <figure>
+                <img src="image2025/food05/02.jpg" alt="牛肉烏龍乾麵(肉ぶっかけうどん)">
+                <figcaption>牛肉烏龍乾麵(肉ぶっかけうどん)</figcaption>
+            </figure>
+               <br><br>
+            <figure>
+                <img src="image2025/food05/03.jpg" alt="炸物">
+                <figcaption>炸物</figcaption>
+            </figure>
+            <br>
+            
+            
+            <hr style="margin: 2.5em 0; border: 0; border-top: 1px solid var(--border-color);">
+
+            <div class="store-info">
+                <h3>店家資訊</h3>
+                <ul>
+                    <li><i class="fas fa-store"></i><strong>店名：</strong> さか枝うどん 南新町店</li>
+                    <li><i class="fas fa-map-marker-alt"></i><strong>地址：</strong> 香川県高松市南新町4-6</li>
+                    <li><i class="fas fa-phone"></i><strong>電話：</strong> 087-813-1501</li>
+                </ul>
+            </div>
+            
+        </div>
+
+    </article>
+    <!-- Related Posts (可選) -->
+    <section class="related-posts">
+    <!--    <h2>相關文章</h2> -->
+        <div class="posts-grid">
+            <!-- ...類似首頁的 Post Card 結構 ... -->
+        </div>
+    </section>
+
+<section id="comments">
+  <h2>留言板</h2>
+  <form id="commentForm">
+    <input type="text" id="name" placeholder="暱稱" required>
+    <textarea id="message" placeholder="分享你的想法..." required></textarea>
+    <button type="submit">送出留言</button>
+  </form>
+
+  <div id="commentList"></div>
+</section>
+
+
+</main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 47制霸中. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/brokenfish7/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/brokenfish7?igsh=MTg4bDdlM21pcTNsbQ==" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <button id="backToTopBtn" title="回到頂部"><i class="fas fa-arrow-up"></i></button>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
