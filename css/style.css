@@ -260,6 +260,10 @@ header .container {
     flex-direction: column;
 }
 
+.post-card-excerpt {
+    flex-grow: 1;
+}
+
 .post-card-category {
     display: inline-block;
     background-color: var(--primary-blue);
