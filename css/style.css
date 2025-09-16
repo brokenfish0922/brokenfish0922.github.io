@@ -1109,4 +1109,14 @@ footer {
     font-weight: bold;
 }
 
+/* --- 讓整張卡片可點擊的輔助樣式 --- */
+.post-card-link-wrapper {
+    display: block; /* 讓 a 標籤可以像 div 一樣撐開 */
+    text-decoration: none; /* 移除預設的底線 */
+    color: inherit; /* 繼承父層的文字顏色 */
+}
 
+/* 當滑鼠移到卡片上時，讓標題變色，模擬連結效果 */
+.post-card-link-wrapper:hover .post-card h3 {
+    color: var(--accent-coral);
+}
