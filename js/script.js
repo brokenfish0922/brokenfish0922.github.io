@@ -148,7 +148,7 @@ const navigationData = {
             { title: '松山鯛魚飯 秋嘉 本店', url: 'akiyoshi.html' },
             { title: 'かどや 道後椿坂店', url: 'kadoya.html' }
         ]
-    }
+    },
     'category-local-food': { // 您可以為其他分類建立新的項目
         name: '在地美食',
         listUrl: 'category-local-food.html',
@@ -162,7 +162,7 @@ const navigationData = {
           { title: '骨付鳥-寄鳥味鳥', url: 'yoridorimidori.html' },
           { title: '瀬戸よ志', url: 'setoyoshi.html' }
         ]
-    }    
+    },    
     'category-coffee': { // 您可以為其他分類建立新的項目
         name: '咖啡與甜點',
         listUrl: 'category-coffee.html',
@@ -176,7 +176,7 @@ const navigationData = {
           { title: '小豆島橄欖霜淇淋', url: 'shodosimaice.html' },
           { title: '瀬戸内ジェラート MARE', url: 'setouchigelatomare.html' }
         ]
-    }    
+    },    
     'category-spot-food': { // 您可以為其他分類建立新的項目
         name: '觀光景點區美食',
         listUrl: 'category-spot-food.html',
@@ -188,7 +188,7 @@ const navigationData = {
           { title: '道後溫泉商店街美食', url: 'dogoonsen.html.html' },
           { title: '讚岐高松祭屋台', url: 'yatai.html.html' }
         ]
-    }    
+    },   
     'okasi': { // 您可以為其他分類建立新的項目
         name: '零食大集合',
         listUrl: 'okasi.html',
