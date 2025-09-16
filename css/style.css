@@ -487,9 +487,12 @@ footer {
 .review-summary h4 {
     font-weight: bold;
     margin-top: 25px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: #000;
 }    
+.review-summary p {
+    margin-bottom: 20px; /* 在每個段落下方增加間距 */
+}
 /* 讓最後一個段落下方沒有間距，排版更整齊 */
 .review-summary p:last-child {
     margin-bottom: 0;
