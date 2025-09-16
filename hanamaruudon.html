@@ -9,7 +9,26 @@
     <!-- Font Awesome (請自行獲取最新版CDN或本地引入) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-
+    <style>
+        .ratings {
+        position: relative;
+        vertical-align: middle;
+        display: inline-block;
+        color: #ddd; /*背景星星顏色*/
+        overflow: hidden;
+        font-size: 40px; /*調整字體大小可放大縮小星星*/
+        text-shadow: 0px 1px 0 #999;
+        }
+        .full_star {
+        width: 90%; /*調整寬度可變更星等*/
+        position: absolute;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #ebde33; /*前景星星顏色*/
+        }
+    </style>
 </head>
 <body>
     <header>
