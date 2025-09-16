@@ -837,3 +837,66 @@ footer {
     line-height: 1.6;
     color: #444;
   }
+    .ordering-process {
+        font-family: "Helvetica Neue", Arial, "蘋方-繁", "Microsoft JhengHei", sans-serif;
+        line-height: 1.7;
+        background-color: #f8f9fa;
+        padding: 25px;
+        border-radius: 8px;
+        max-width: 600px;
+        margin: 20px auto;
+        border: 1px solid #e9ecef;
+    }
+    .ordering-process h4 {
+        font-size: 22px;
+        color: #343a40;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 10px;
+        margin-top: 0;
+    }
+    .ordering-process ol {
+        list-style: none;
+        padding-left: 0;
+        counter-reset: step-counter;
+    }
+    .ordering-process ol > li {
+        position: relative;
+        padding-left: 45px;
+        margin-bottom: 20px;
+        counter-increment: step-counter;
+    }
+    .ordering-process ol > li::before {
+        content: counter(step-counter);
+        position: absolute;
+        left: 0;
+        top: -2px;
+        width: 32px;
+        height: 32px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .ordering-process li strong {
+        font-size: 18px;
+        color: #495057;
+        display: block;
+    }
+    .ordering-process li p {
+        margin: 5px 0 0 0;
+        color: #6c757d;
+    }
+    .ordering-process li ul {
+        list-style-type: '▸';
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+    .ordering-process li ul li {
+        color: #6c757d;
+        padding-left: 5px;
+        margin-bottom: 5px;
+    }
