@@ -261,6 +261,9 @@ header .container {
 }
 
 .post-card-excerpt {
+    font-size: 0.95em;
+    color: var(--text-light);
+    margin-bottom: 15px;
     flex-grow: 1;
 }
 
