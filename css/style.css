@@ -475,6 +475,7 @@ footer {
     
 .review-summary {
     background-color: #eef3f8; /* 淡藍色背景，與主題呼應 */
+    color: #333; /* 使用深灰色，避免純黑的刺眼感 */
     border-left: 5px solid var(--darker-blue); /* 左側有重點色塊 */
     padding: 20px 25px; /* 增加內部間距 */
     margin: 2.5em 0; /* 增加與上下元素的間距 */
@@ -486,9 +487,14 @@ footer {
 .review-summary h4 {
     font-weight: bold;
     margin-top: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: #000;
 }    
+/* 讓最後一個段落下方沒有間距，排版更整齊 */
+.review-summary p:last-child {
+    margin-bottom: 0;
+}
+
 .store-info {
     background-color: #f8f9fa;
     border-left: 5px solid var(--primary-blue);
