@@ -143,7 +143,7 @@ const navigationData = {
     },
     'category-taimeshi': { // 您可以為其他分類建立新的項目
         name: '另一個美食分類',
-        listUrl: 'category-another.html',
+        listUrl: 'category-taimeshi.html',
         posts: [
             { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
             { title: '讚岐烏龍麵種類簡介', url: 'kadoya.html' }
@@ -151,7 +151,7 @@ const navigationData = {
     }
     'category-local-food': { // 您可以為其他分類建立新的項目
         name: '另一個美食分類',
-        listUrl: 'category-another.html',
+        listUrl: 'category-local-food.html',
         posts: [
             { title: '讚岐烏龍麵種類簡介', url: 'goichi.html' },
           { title: '讚岐烏龍麵種類簡介', url: 'miyoshi.html' },
@@ -163,30 +163,30 @@ const navigationData = {
           { title: '讚岐烏龍麵種類簡介', url: 'setoyoshi.html' }
         ]
     }    
-    'another-category': { // 您可以為其他分類建立新的項目
+    'category-coffee': { // 您可以為其他分類建立新的項目
         name: '另一個美食分類',
-        listUrl: 'category-another.html',
+        listUrl: 'category-coffee.html',
         posts: [
-            { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' }
+            { title: '讚岐烏龍麵種類簡介', url: 'umie.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'minami.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'shirasagi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'wordsworth.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'komeda.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'kuguri.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'shodosimaice.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'setouchigelatomare.html' }
         ]
     }    
-    'another-category': { // 您可以為其他分類建立新的項目
+    'category-spot-food': { // 您可以為其他分類建立新的項目
         name: '另一個美食分類',
-        listUrl: 'category-another.html',
+        listUrl: 'category-spot-food.html',
         posts: [
-            { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' },
-          { title: '讚岐烏龍麵種類簡介', url: 'akiyoshi.html' }
+            { title: '讚岐烏龍麵種類簡介', url: 'karari.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'ehimescience.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'kitchensetouchi.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'emifullmasaki.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'dogoonsen.html.html' },
+          { title: '讚岐烏龍麵種類簡介', url: 'yatai.html.html' }
         ]
     }    
     'another-category': { // 您可以為其他分類建立新的項目
