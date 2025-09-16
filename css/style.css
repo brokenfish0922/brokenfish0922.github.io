@@ -657,6 +657,16 @@ footer {
     .hero p { font-size: 1em; }
     .btn { padding: 10px 20px; font-size: 0.9em; }
 }
+/* --- 響應式：寬螢幕時，側邊欄移到右側 --- */
+@media (min-width: 992px) {
+    .page-with-sidebar {
+        flex-direction: row; /* 寬螢幕改為水平排列 */
+    }
+    .sidebar {
+        width: 300px; /* 固定寬度 */
+        flex-shrink: 0; /* 防止側邊欄被壓縮 */
+    }
+}
 /* --- 分類導覽卡片樣式 (更新版) --- */
 .category-section {
     padding: 2rem 2rem 2.5rem 2rem; /* 【修改】增加內部間距，讓內容和背景色邊緣有空間 */
@@ -905,6 +915,9 @@ footer {
     margin-bottom: 2rem;
     font-size: 0.9em;
     color: var(--text-light);
+    padding: 10px 15px;
+    background-color: #eef3f8;
+    border-radius: var(--border-radius);
 }
 .breadcrumbs a {
     color: var(--primary-blue);
@@ -916,3 +929,184 @@ footer {
 .breadcrumbs span {
     margin: 0 8px;
 }
+/* --- 主導覽列 下拉選單 --- */
+.main-nav .dropdown {
+    position: relative;
+}
+
+.main-nav .dropdown .dropdown-menu {
+    display: none; /* 預設隱藏 */
+    position: absolute;
+    top: 150%; /* 稍微往下推，避免直接貼著 */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--white);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
+    padding: 10px 0;
+    list-style: none;
+    min-width: 200px; /* 設定最小寬度 */
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: top 0.3s ease, opacity 0.3s ease;
+}
+
+.main-nav .dropdown:hover .dropdown-menu {
+    display: block; /* 滑鼠移入時顯示 */
+    top: 100%;
+    opacity: 1;
+    visibility: visible;
+}
+
+.main-nav .dropdown-menu li {
+    margin: 0;
+}
+
+.main-nav .dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--text-dark);
+    white-space: nowrap; /* 避免文字換行 */
+}
+
+.main-nav .dropdown-menu a:hover {
+    background-color: var(--primary-bg);
+    color: var(--accent-coral);
+}
+
+.main-nav .dropdown a i {
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+/* --- 頁面通用標題 --- */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-header p {
+    font-size: 1.1em;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* --- 第一層: 旅程卡片網格 --- */
+.trip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.trip-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.trip-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.trip-card-content {
+    padding: 25px;
+}
+
+.trip-card h3 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.trip-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5em;
+}
+
+/* --- 第二層: "施工中"卡片樣式 --- */
+.category-card.construction {
+    background-color: #f8f9fa;
+    border: 2px dashed var(--border-color);
+    box-shadow: none;
+}
+.construction-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* 與圖片卡片同高 */
+    color: var(--text-light);
+}
+.construction-content i {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: #bdc3c7;
+}
+.construction-content h4 { padding: 0; }
+
+/* --- 第三層: 側邊欄佈局 --- */
+.page-with-sidebar {
+    display: flex;
+    flex-direction: column; /* 手機上預設垂直排列 */
+    gap: 2.5rem;
+}
+
+.main-content-area {
+    flex: 1; /* 佔據剩餘空間 */
+}
+
+.sidebar {
+    width: 100%; /* 手機上佔滿寬度 */
+}
+/* --- 側邊欄 Widget 樣式 --- */
+.widget {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.widget-title {
+    font-size: 1.3em;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+.widget-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.widget-list li a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--text-dark);
+    border-radius: 6px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.widget-list li a:hover {
+    background-color: var(--primary-bg);
+    color: var(--darker-blue);
+}
+
+.widget-list li a.active {
+    background-color: var(--primary-blue);
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+
