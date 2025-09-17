@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>愛媛鯛魚飯 - 47制霸中</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome (請自行獲取最新版CDN或本地引入) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="index.html" class="logo">
+            <i class="fas fa-map-signs"></i> 47制霸中
+        </a>
+        <nav class="main-nav">
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul>
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="trips-archive.html" class="active">所有旅程</a></li>
+                <li><a href="about.html">關於我</a></li>
+                <li><a href="contact.html">聯絡我</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container section-padding">
+  <!-- 麵包屑導覽 -->
+        <div class="breadcrumbs">
+            <a href="index.html">首頁</a>
+            <span>&gt;</span>
+            <a href="trips-archive.html">所有旅程</a>
+            <span>&gt;</span>
+            <a href="2025.html">2025四國之旅</a>
+            <span>&gt;</span>
+            <span>愛媛鯛魚飯</span>
+        </div>
+    <article class="single-post-content">
+        <header class="post-header">
+                    <h1>愛媛鯛魚飯</h1>
+            <div class="post-meta">
+                <span><i class="far fa-calendar-alt"></i> 2025年9月14日</span>
+                <span><i class="fas fa-user"></i> 破魚</span>
+                <span><i class="fas fa-folder-open"></i> <a href="#">日本</a></span>
+
+            </div>
+
+        </header>
+
+        <div class="page-with-sidebar">
+            <!-- 主要內容區 -->
+            <div class="main-content-area">
+                <div class="page-header">
+
+                    <p>愛媛縣臨近瀨戶內海和宇和海，是日本重要的鯛魚產地，因此愛媛鯛魚飯是愛媛縣極具代表性的鄉土料理。</p>
+                </div>
+                
+                <div class="posts-grid">
+                    <!-- 松山鯛魚飯 秋嘉 本店 卡片 -->
+                    <a href="akiyoshi.html" class="post-card-link-wrapper">
+                    <div class="post-card">
+                        <img src="images/20250816-akitai.jpg" alt="松山鯛魚飯 秋嘉 本店" class="post-card-image">
+                        <div class="post-card-content">
+                            <h3>松山鯛魚飯 秋嘉 本店</h3>
+                            <p class="post-card-excerpt">愛媛「鯛魚飯」雙重享受，極致美味！新鮮海鮮搭配道地風味，讓您筷子停不下來！</p>
+                            <div class="post-card-meta">
+                                <span class="read-more">閱讀全文 &rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+
+                    
+                    <!-- かどや 道後椿坂店 卡片 -->
+                    <a href="kadoya.html" class="post-card-link-wrapper">
+                    <div class="post-card">
+                        <img src="images/20250815-kadoyatai.jpg" alt="かどや 道後椿坂店" class="post-card-image">
+                        <div class="post-card-content">
+                            <h3>かどや 道後椿坂店</h3>
+                            <p class="post-card-excerpt">位於道後溫泉商店街內，方便又美味。</p>
+                            <div class="post-card-meta">
+                                <span class="read-more">閱讀全文 &rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+               </div>
+            </div>
+        </div>
+
+
+    </article>
+
+    <!-- Related Posts (可選) -->
+<!--    <section class="related-posts">
+        <h2>相關文章</h2>
+        <div class="posts-grid"> -->
+            <!-- ...類似首頁的 Post Card 結構 ... -->
+        </div>
+    </section>
+
+    <!-- Comments Section (WordPress 會處理這部分) -->
+<section id="comments">
+  <h2>留言板</h2>
+  <form id="commentForm">
+    <input type="text" id="name" placeholder="暱稱" required>
+    <textarea id="message" placeholder="分享你的想法..." required></textarea>
+    <button type="submit">送出留言</button>
+  </form>
+
+  <div id="commentList"></div>
+</section>
+
+
+
+
+</main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 47制霸中. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/brokenfish7/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/brokenfish7?igsh=MTg4bDdlM21pcTNsbQ==" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <button id="backToTopBtn" title="回到頂部"><i class="fas fa-arrow-up"></i></button>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
