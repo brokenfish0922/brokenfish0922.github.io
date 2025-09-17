@@ -196,7 +196,7 @@ const navigationData = {
            { title: '零食大集合', url: 'okasi.html' }
         ]
     },
-      '2025': { // 您可以為其他分類建立新的項目
+      'shikoku-all': { // 您可以為其他分類建立新的項目
         name: '2025四國之旅',
         listUrl: '2025.html',
         posts: [
