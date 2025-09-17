@@ -185,8 +185,8 @@ const navigationData = {
           { title: '愛媛県総合科学博物館餐廳', url: 'ehimescience.html' },
           { title: '四國水族館-kitchen setouchi', url: 'kitchensetouchi.html' },
           { title: 'エミフル MASAKI美食街', url: 'emifullmasaki.html' },
-          { title: '道後溫泉商店街美食', url: 'dogoonsen.html.html' },
-          { title: '讚岐高松祭屋台', url: 'yatai.html.html' }
+          { title: '道後溫泉商店街美食', url: 'dogoonsen.html' },
+          { title: '讚岐高松祭屋台', url: 'yatai.html' }
         ]
     },   
     'okasi': { // 您可以為其他分類建立新的項目
@@ -194,6 +194,18 @@ const navigationData = {
         listUrl: 'okasi.html',
         posts: [
            { title: '零食大集合', url: 'okasi.html' }
+        ]
+    },
+      '2025': { // 您可以為其他分類建立新的項目
+        name: '2025四國之旅',
+        listUrl: '2025.html',
+        posts: [
+            { title: '讚岐烏龍麵巡禮', url: 'category-shikoku-udon.html' },
+          { title: '愛媛鯛魚飯', url: 'category-taimeshi.html' },
+          { title: '在地美食', url: 'category-local-food.html' },
+          { title: '咖啡與甜點', url: 'category-coffee.html' },
+          { title: '觀光景點區美食', url: 'category-spot-food.html' },
+          { title: '零食大集合', url: 'okasi.html' }
         ]
     }
 };
