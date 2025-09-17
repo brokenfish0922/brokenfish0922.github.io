@@ -195,18 +195,6 @@ const navigationData = {
         posts: [
            { title: '零食大集合', url: 'okasi.html' }
         ]
-    },
-      'shikoku-all': { // 您可以為其他分類建立新的項目
-        name: '2025四國之旅',
-        listUrl: '2025.html',
-        posts: [
-            { title: '讚岐烏龍麵巡禮', url: 'category-shikoku-udon.html' },
-          { title: '愛媛鯛魚飯', url: 'category-taimeshi.html' },
-          { title: '在地美食', url: 'category-local-food.html' },
-          { title: '咖啡與甜點', url: 'category-coffee.html' },
-          { title: '觀光景點區美食', url: 'category-spot-food.html' },
-          { title: '零食大集合', url: 'okasi.html' }
-        ]
     }
 };
 
