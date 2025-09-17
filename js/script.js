@@ -207,7 +207,7 @@ const navigationData = {
           { title: '觀光景點區美食', url: 'category-spot-food.html' },
           { title: '零食大集合', url: 'okasi.html' }
         ]
-    },
+    }
 };
 
 /**
