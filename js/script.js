@@ -165,7 +165,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     generateTOC();
+      const postsContainer = document.getElementById('posts-container');
+    if (postsContainer) {
+        generateTagPage();
+    }
 });
+
+function generateTagPage() {
+    const tagTitleElement = document.getElementById('tag-title');
+    const tagDescriptionElement = document.getElementById('tag-description');
+    const postsContainer = document.getElementById('posts-container');
+
+    // 1. 從 URL 獲取標籤名稱
+    const urlParams = new URLSearchParams(window.location.search);
+    const tagName = urlParams.get('tag'); // 例如 "美食"
+
+    // 如果 URL 沒有 tag 參數，就顯示提示訊息
+    if (!tagName) {
+        tagTitleElement.textContent = '找不到標籤';
+        tagDescriptionElement.textContent = '請確認您的連結是否正確。';
+        return;
+    }
+    
+    // 2. 篩選出包含該標籤的所有文章
+    // 注意：這裡的 allPosts 變數來自我們剛剛建立的 posts-db.js
+    const filteredPosts = allPosts.filter(post => post.tags.includes(tagName));
+
+    // 3. 更新頁面標題和描述
+    document.title = `標籤: ${tagName} - 47制霸中`; // 更新瀏覽器標籤頁的標題
+    tagTitleElement.innerHTML = `<i class="fas fa-tag"></i> 標籤: ${tagName}`;
+    tagDescriptionElement.textContent = `為您找到 ${filteredPosts.length} 篇與「${tagName}」相關的文章。`;
+    
+    // 4. 動態生成文章卡片並插入頁面
+    if (filteredPosts.length > 0) {
+        let postsHTML = '';
+        filteredPosts.forEach(post => {
+            // 這邊的 HTML 結構完全複製您現有的 .post-card 結構，以確保樣式一致
+            postsHTML += `
+                <div class="post-card">
+                    <a href="${post.url}" class="post-card-link-wrapper">
+                        <img src="${post.image}" alt="${post.title}" class="post-card-image">
+                        <div class="post-card-content">
+                            <span class="post-card-category">${post.category}</span>
+                            <h3>${post.title}</h3>
+                            <p class="post-card-excerpt">${post.excerpt}</p>
+                            <div class="post-card-meta">
+                                <span class="date"><i class="far fa-calendar-alt"></i> ${post.date}</span>
+                                <span class="read-more">閱讀更多 &rarr;</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            `;
+        });
+        postsContainer.innerHTML = postsHTML;
+    } else {
+        // 如果沒有找到任何相關文章
+        postsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">抱歉，目前沒有與這個標籤相關的文章。</p>';
+    }
+}
 
 // --- 文末導覽區塊程式碼 ---
 
