@@ -1226,3 +1226,95 @@ footer {
 .post-navigation .nav-back-to-list a i {
     margin-right: 8px;
 }
+
+/* --- Food Collection Page --- */
+.food-collection-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.food-collection-header h2 {
+    font-size: 2.5em; /* 讓主標題更醒目 */
+    color: #3A5F7D; /* 使用 H1 的深藍色 */
+}
+
+.food-collection-header p {
+    font-size: 1.1em;
+    max-width: 650px;
+    margin: 0 auto;
+    color: var(--text-light);
+}
+
+.food-grid {
+    display: grid;
+    /* 核心響應式設定：
+       - repeat: 自動填充
+       - auto-fit: 當空間不足時，項目會自動換行
+       - minmax(300px, 1fr): 卡片最小寬度為300px，最大會自動填滿剩餘空間
+    */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; /* 卡片之間的間距 */
+}
+
+.food-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden; /* 確保圖片圓角生效 */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color); /* 增加一個細微的邊框，提升質感 */
+}
+
+.food-card:hover {
+    transform: translateY(-8px); /* 滑鼠懸停時卡片輕微上浮 */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.food-card-image-wrapper {
+    width: 100%;
+    height: 220px; /* 固定圖片高度，讓所有卡片視覺上更整齊 */
+    overflow: hidden;
+}
+
+.food-card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 確保圖片填滿容器且不變形 */
+    transition: transform 0.4s ease;
+}
+
+.food-card:hover .food-card-image-wrapper img {
+    transform: scale(1.08); /* 滑鼠懸停時圖片輕微放大 */
+}
+
+.food-card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* 讓內容區域填滿卡片剩餘空間 */
+}
+
+.food-card h3 {
+    font-family: var(--font-headings);
+    font-size: 1.5em;
+    color: #4682B4; /* 使用 H2 的鋼藍色 */
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.food-card p {
+    font-family: var(--font-primary);
+    color: var(--text-light);
+    font-size: 0.95em;
+    line-height: 1.7;
+    flex-grow: 1; /* 讓簡介文字填滿空間，確保下方按鈕對齊 */
+    margin-bottom: 1.5em;
+}
+
+/* 可選的 "閱讀更多" 按鈕，若您的簡介較長，可以連結到單獨的文章頁面 */
+.food-card .btn {
+    margin-top: auto; /* 將按鈕推至卡片底部 */
+    align-self: flex-start; /* 按鈕靠左對齊 */
+}
