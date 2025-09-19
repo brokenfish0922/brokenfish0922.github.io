@@ -505,6 +505,18 @@ footer {
     margin-bottom: 0;
 }
 
+/* --- 美化評論區塊段落的第一個字 --- */
+.review-summary p::first-letter {
+    font-size: 3.5em;                     /* 字體大小，放大為原本的 3.5 倍 */
+    font-weight: bold;                    /* 字體加粗 */
+    color: var(--accent-coral);           /* 使用您佈景主題中的點綴色(珊瑚色) */
+    float: left;                          /* 讓文字環繞在第一個字的周圍 */
+    line-height: 0.8;                     /* 調整行高，讓放大的字與第一行文字更貼合 */
+    padding-right: 8px;                   /* 在字的右邊增加一點間距，避免文字擠在一起 */
+    padding-bottom: 2px;                  /* 在字的下方增加一點間距 */
+    font-family: var(--font-headings);    /* 使用標題字體，增加設計感 */
+}
+
 .store-info {
     background-color: #f8f9fa;
     border-left: 5px solid var(--primary-blue);
