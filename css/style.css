@@ -1310,7 +1310,7 @@ footer {
     font-size: 0.95em;
     line-height: 1.7;
     flex-grow: 1; /* 讓簡介文字填滿空間，確保下方按鈕對齊 */
-    margin-bottom: 1.5em;
+    margin-bottom: 0;  /* 原本是1.5em，我自己改成0 */
 }
 
 /* 可選的 "閱讀更多" 按鈕，若您的簡介較長，可以連結到單獨的文章頁面 */
