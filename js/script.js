@@ -117,6 +117,54 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // --- Intersection Observer for Fade-In Animation ---
+    const faders = document.querySelectorAll('.fade-in-section');
+
+    const appearOptions = {
+        threshold: 0.15, // 元素進入畫面 15% 時觸發
+        rootMargin: "0px 0px -50px 0px" // 稍微提早觸發
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            } else {
+                entry.target.classList.add('is-visible');
+                appearOnScroll.unobserve(entry.target); // 觸發後就停止觀察
+            }
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+    // --- Generate Table of Contents ---
+    function generateTOC() {
+        const content = document.querySelector('.entry-content');
+        const tocContainer = document.getElementById('toc-container');
+        
+        if (!content || !tocContainer) return;
+
+        const headings = content.querySelectorAll('h3');
+        if (headings.length < 2) { // 如果標題少於2個，就不顯示目錄
+             tocContainer.style.display = 'none';
+             return;
+        }
+
+        let tocHTML = '<h4><i class="fas fa-list-ol"></i> 本文目錄</h4><ul>';
+        
+        headings.forEach((heading, index) => {
+            const id = 'toc-heading-' + index;
+            heading.setAttribute('id', id);
+            tocHTML += `<li><a href="#${id}">${heading.textContent}</a></li>`;
+        });
+        
+        tocHTML += '</ul>';
+        tocContainer.innerHTML = tocHTML;
+    }
+
+    generateTOC();
 });
 
 // --- 文末導覽區塊程式碼 ---
