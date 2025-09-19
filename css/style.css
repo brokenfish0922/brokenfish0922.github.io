@@ -1386,3 +1386,73 @@ footer {
 .food-card-image-wrapper img {
     cursor: pointer;
 }
+
+/* --- Scroll-Triggered Fade-In Animation --- */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- In-Post Image Gallery --- */
+.post-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 2em 0; /* 與上下段落的間距 */
+}
+
+.post-gallery figure {
+    margin: 0; /* 覆蓋掉原本 figure 的 margin */
+}
+
+.post-gallery img {
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Table of Contents --- */
+.toc-container {
+    background-color: #eef3f8;
+    padding: 20px 25px;
+    border-radius: var(--border-radius);
+    margin-bottom: 2.5em;
+    border-left: 5px solid var(--primary-blue);
+}
+
+.toc-container h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    color: var(--text-dark);
+}
+
+.toc-container ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.toc-container li a {
+    color: var(--text-light);
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    transition: color 0.3s ease;
+}
+
+.toc-container li:last-child a {
+    border-bottom: none;
+}
+
+.toc-container li a:hover {
+    color: var(--accent-coral);
+}
