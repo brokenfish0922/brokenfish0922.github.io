@@ -272,3 +272,42 @@ function generatePostNavigation() {
 
 // 在網頁的 DOM 結構都載入完成後，執行我們的導覽生成函式
 document.addEventListener('DOMContentLoaded', generatePostNavigation);
+
+
+// --- Lightbox Functionality ---
+document.addEventListener('DOMContentLoaded', () => {
+    // 獲取所有需要的元素
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const foodImages = document.querySelectorAll('.food-card-image-wrapper img');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    // 檢查 lightbox 是否存在於頁面中
+    if (lightbox) {
+        // 為每一張美食圖片添加點擊事件
+        foodImages.forEach(image => {
+            image.addEventListener('click', () => {
+                lightbox.style.display = 'block'; // 顯示 Lightbox
+                lightboxImg.src = image.src;     // 將點擊的圖片路徑設置給 Lightbox 中的圖片
+            });
+        });
+
+        // 定義一個關閉 Lightbox 的函式
+        const closeLightbox = () => {
+            lightbox.style.display = 'none';
+        }
+
+        // 當點擊關閉按鈕 (X) 時，關閉 Lightbox
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeLightbox);
+        }
+
+        // 當點擊 Lightbox 的背景（黑色遮罩區域）時，也關閉 Lightbox
+        lightbox.addEventListener('click', (event) => {
+            // 檢查點擊的目標是否是背景本身，而不是裡面的圖片
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+    }
+});
