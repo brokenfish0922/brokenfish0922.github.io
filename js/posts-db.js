@@ -171,20 +171,20 @@ const allPosts = [
         tags: ['香川', '小豆島', '美食', '素麵']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
+        url: 'umie.html',
+        image: 'images/20250811-umie.jpg',
         category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
+        title: 'umie',
+        excerpt: '北濱Alley裡復古工業風咖啡館，坐擁瀨戶內海海景，藝術與美食的完美融合，讓你忘卻時間流動的悠閒之地。',
         date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        tags: ['香川', '高松', '美食', '咖啡', '飲料', '甜點']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
+        url: 'minami.html',
+        image: 'images/20250814-minami.jpg',
         category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
+        title: '南珈琲店',
+        excerpt: '品味昭和復古風情，咖啡與厚片吐司的極致享受！',
         date: '2025年9月18日',
         tags: ['愛媛', '美食', '炸雞', 'B級美食']
     },
