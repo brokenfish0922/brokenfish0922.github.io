@@ -298,39 +298,12 @@ const allPosts = [
     },
     {
         url: 'okasi.html',
-        image: 'image2025/food/goichi_cover.jpg',
+        image: 'images/okasi.png',
         category: '零食大集合',
         title: '零食大集合',
         excerpt: '在自助旅行的篇章中，「當地零食」扮演著一個低調卻極其重要的角色，它不僅是填補行程空檔與飢餓的選擇，更是一把能輕易開啟在地生活樣貌的鑰匙，以及製造個人專屬回憶的媒介。',
         date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
-    },
-    {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
-        category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
-    },
-    {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
-        category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
-    },                
-    {
-        url: 'umie.html', // 假設您有這篇文章
-        image: 'image2025/cafe/umie_cover.jpg',
-        category: '咖啡與甜點',
-        title: 'umie',
-        excerpt: '高松港邊的倉庫改造咖啡廳，擁有絕佳的海景視野和獨特的文青氛圍，是享受悠閒下午的絕佳去處。',
-        date: '2025年9月17日',
-        tags: ['香川', '咖啡廳', '海景', '甜點']
+        tags: ['香川', '高松', '小豆島', '愛媛', '道後溫泉', '美食', '甜點', '飲料', '麵包', '超市', '蜜柑', '果汁']
     }
     // ... 在此處加入您所有的文章資訊 ...
 ];
