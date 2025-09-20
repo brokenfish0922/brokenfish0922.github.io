@@ -186,20 +186,20 @@ const allPosts = [
         title: '南珈琲店',
         excerpt: '品味昭和復古風情，咖啡與厚片吐司的極致享受！',
         date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        tags: ['香川', '高松', '美食', '咖啡', '飲料', '早餐']
     },
     {
         url: 'goichi.html',
         image: 'image2025/food/goichi_cover.jpg',
         category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
+        title: '白鷺珈琲',
         excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
         date: '2025年9月18日',
         tags: ['愛媛', '美食', '炸雞', 'B級美食']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
+        url: 'shirasagi.html',
+        image: 'images/20250815-sirasagi.jpg',
         category: '咖啡與甜點',
         title: '唐揚げ食堂 ごいち 本店',
         excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
