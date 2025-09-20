@@ -69,7 +69,7 @@ const allPosts = [
         title: '手打烏龍麵 味庄',
         excerpt: '高松車站旁的晨光第一味。',
         date: '2025年9月16日',
-        tags: ['香川', '高松', '美食', '烏龍麵']
+        tags: ['香川', '高松', '美食', '烏龍麵', '早餐']
     },
     {
         url: 'ShodoshimaFerry.html',
