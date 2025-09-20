@@ -87,7 +87,7 @@ const allPosts = [
         title: '松山鯛魚飯 秋嘉 本店',
         excerpt: '愛媛「鯛魚飯」雙重享受，極致美味！新鮮海鮮搭配道地風味，讓您筷子停不下來！',
         date: '2025年9月17日',
-        tags: ['愛媛', '大街道', '美食', '鯛魚飯']
+        tags: ['愛媛', "松山", '大街道', '美食', '鯛魚飯']
     },
     {
         url: 'kadoya.html',
@@ -96,7 +96,7 @@ const allPosts = [
         title: 'かどや 道後椿坂店',
         excerpt: '位於道後溫泉商店街內，方便又美味。',
         date: '2025年9月17日',
-        tags: ['愛媛', '道後溫泉', '美食', '鯛魚飯']
+        tags: ['愛媛', "松山", '道後溫泉', '美食', '鯛魚飯']
     },
     {
         url: 'goichi.html',
@@ -105,7 +105,7 @@ const allPosts = [
         title: '唐揚げ食堂 ごいち 本店',
         excerpt: '炸雞酥脆多汁，白飯無限續加，高CP值飽足你的味蕾與心靈！',
         date: '2025年9月17日',
-        tags: ['愛媛', '大街道', '美食', '唐揚雞', '定食']
+        tags: ['愛媛', "松山", '大街道', '美食', '唐揚雞', '定食']
     },
     {
         url: 'miyoshi.html',
@@ -114,7 +114,7 @@ const allPosts = [
         title: '広島風 お好焼き みよし 駅前店',
         excerpt: '品嚐愛媛在地「三津浜燒」，感受傳統與創新的完美融合！',
         date: '2025年9月17日',
-        tags: ['愛媛', '三津浜', '美食', '三津浜燒']
+        tags: ['愛媛', "松山", '三津浜', '美食', '三津浜燒']
     },
     {
         url: 'donburiya.html',
@@ -189,119 +189,119 @@ const allPosts = [
         tags: ['香川', '高松', '美食', '咖啡', '飲料', '早餐']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
-        category: '咖啡與甜點',
-        title: '白鷺珈琲',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
-    },
-    {
         url: 'shirasagi.html',
         image: 'images/20250815-sirasagi.jpg',
         category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
+        title: '白鷺珈琲',
+        excerpt: '道後溫泉站前復古咖啡館，窗外電車美景，藝術甜點，網美必訪！',
         date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        tags: ['愛媛', '松山', '道後溫泉', '美食', '咖啡', '飲料', '早餐']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
+        url: 'wordsworth.html',
+        image: 'images/20250816-The Garden of Wordsworth.jpg',
         category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
+        title: 'The Garden of Wordsworth',
+        excerpt: '讓人彷彿置身於英式庭園，以其優雅寧靜的氛圍和精緻的餐點，為訪客提供了一段遠離塵囂的悠閒時光。',
         date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        tags: ['愛媛', '美食', '咖啡', '飲料', '早餐']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
+        url: 'komeda.html',
+        image: 'images/20250818-komeda.jpg',
         category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        title: '客美多(コメダ)珈琲店 松山山西店',
+        excerpt: '以其寬敞舒適的空間、划算的活力早餐聞名，無論是單獨一人或與親友團體都能在此輕鬆享受愉快的咖啡時光。',
+        date: '2025年9月19日',
+        tags: ['愛媛', '松山', '美食', '咖啡', '飲料', '早餐']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
+        url: 'kuguri.html',
+        image: 'images/20250820-Cafe Kuguri.jpg',
         category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        title: 'Cafe Kuguri',
+        excerpt: '坐落於住宅區中的人氣咖啡廳，以其時尚沉穩的裝潢、能讓人忘卻日常的悠閒氛圍，以及多樣又美味的餐點而廣受好評。',
+        date: '2025年9月19日',
+        tags: ['香川', '高松', '美食', '咖啡', '飲料', '早餐']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
+        url: 'shodosimaice.html',
+        image: 'images/20250812-shodoice.jpg',
         category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        title: '小豆島橄欖霜淇淋&檸檬果凍奶昔',
+        excerpt: '小豆島橄欖公園特色甜點。',
+        date: '2025年9月19日',
+        tags: ['香川', '小豆島', '美食', '冰品', '甜點', '飲料']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
+        url: 'setouchigelatomare.html',
+        image: 'images/20250813-MARE.jpg',
         category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        title: '瀬戸内ジェラート MARE',
+        excerpt: '活用瀨戶內及四國時令水果等在地食材為特色，提供多樣化美味義式冰淇淋而廣受好評。',
+        date: '2025年9月19日',
+        tags: ['香川', '高松', '美食', '冰品', '甜點']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
-        category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        url: 'karari.html',
+        image: 'images/20250816-karari.jpg',
+        category: '觀光景點區美食',
+        title: '道の駅 内子フレッシュパークからり',
+        excerpt: '這是一間以「地產地銷」為理念的餐廳，訪客能在此品嚐到內子豬肉等在地特色食材所製成的料理，並享用附設的當地新鮮蔬菜沙拉吧，在窗外自然景色的陪伴下，愜意地享受內子町的美味。',
+        date: '2025年9月19日',
+        tags: ['愛媛', '道の駅', '美食', '定食', '冰品', '甜點']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
-        category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        url: 'ehimescience.html',
+        image: 'images/20250818-science.jpg',
+        category: '觀光景點區美食',
+        title: '愛媛県総合科学博物館餐廳',
+        excerpt: '這是一間在科學博物館內，提供咖哩、烏龍麵、定食及輕食等多樣化餐點的餐廳，為參觀民眾提供了一個可以輕鬆用餐的方便選擇。',
+        date: '2025年9月19日',
+        tags: ['香川', '美食', '定食', '拉麵', '咖哩']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
-        category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        url: 'kitchensetouchi.html',
+        image: 'images/20250819-kitchen setouchi.jpg',
+        category: '觀光景點區美食',
+        title: '四國水族館-kitchen setouchi',
+        excerpt: '提供融入了海豚、海獺等水族館生物元素的特色餐點而聞名，為遊客在參觀之餘，帶來了兼具視覺與味覺趣味的用餐體驗。',
+        date: '2025年9月19日',
+        tags: ['香川', '美食', '燒豚玉子飯', '咖哩', '拉麵']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
-        category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        url: 'emifullmasaki.html',
+        image: 'images/20250815-MASAKI.jpg',
+        category: '觀光景點區美食',
+        title: 'エミフル MASAKI美食街',
+        excerpt: '提供多元化餐飲選擇的大型美食廣場，從日式、中式、韓式料理到漢堡、甜點等應有盡有，並設有適合親子共餐的座位區，能滿足不同年齡層顧客的用餐需求。',
+        date: '2025年9月19日',
+        tags: ['愛媛', '美食', '甜點', '鯛魚燒', '章魚燒', '餃子', '炒飯']
     },
     {
-        url: 'goichi.html',
-        image: 'image2025/food/goichi_cover.jpg',
-        category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
-        date: '2025年9月18日',
-        tags: ['愛媛', '美食', '炸雞', 'B級美食']
+        url: 'dogoonsen.html',
+        image: 'images/20250815-onsenstreet.jpg',
+        category: '觀光景點區美食',
+        title: '道後溫泉商店街美食',
+        excerpt: '道後溫泉商店街是一條充滿活力的拱廊街，匯集了各式在地小吃與美食，讓人在享受溫泉文化之餘，也能透過邊走邊吃的方式，體驗道後獨有的魅力。',
+        date: '2025年9月19日',
+        tags: ['愛媛', '松山', '道後溫泉', '美食', '甜點', '冰品', '蜜柑', '果汁']
     },
     {
-        url: 'goichi.html',
+        url: 'yatai.html',
+        image: 'images/20250813-yatai.jpg',
+        category: '觀光景點區美食',
+        title: '讚岐高松祭屋台',
+        excerpt: '讚岐高松祭的美食屋台提供了一個品嚐當地特色與感受祭典熱鬧氛圍的絕佳機會，從經典的炒麵、章魚燒，到香川特有的讚岐烏龍麵、骨付鳥等在地美食應有盡有，讓參與者能在享受花火與遊行之餘，也能大飽口福。',
+        date: '2025年9月19日',
+        tags: ['香川', '高松', '祭典', '屋台', '甜點', '冰品', '炒麵', '烤肉']
+    },
+    {
+        url: 'okasi.html',
         image: 'image2025/food/goichi_cover.jpg',
-        category: '咖啡與甜點',
-        title: '唐揚げ食堂 ごいち 本店',
-        excerpt: '位於今治市的超人氣炸雞食堂，外皮酥脆肉質多汁，是當地人也愛排隊的平民美食。',
+        category: '零食大集合',
+        title: '零食大集合',
+        excerpt: '在自助旅行的篇章中，「當地零食」扮演著一個低調卻極其重要的角色，它不僅是填補行程空檔與飢餓的選擇，更是一把能輕易開啟在地生活樣貌的鑰匙，以及製造個人專屬回憶的媒介。',
         date: '2025年9月18日',
         tags: ['愛媛', '美食', '炸雞', 'B級美食']
     },
