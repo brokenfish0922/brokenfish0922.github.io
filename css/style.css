@@ -1020,7 +1020,7 @@ footer {
 }
 
 .trip-card {
-    background-color: var(--card-bg);
+    background-color: #fffaf5; /* 帶有淡淡橘色調的背景色 */
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
     overflow: hidden;
@@ -1030,6 +1030,7 @@ footer {
 .trip-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    background-color: #ffffff; /* 懸停時讓背景變回白色，與周圍產生對比 */
 }
 
 .trip-card img {
