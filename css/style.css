@@ -738,7 +738,7 @@ footer {
 }
 
 .category-card {
-    background-color: #fff;
+    background-color: #f7f9fa;
     border-radius: 12px;
     overflow: hidden;
     text-align: center;
@@ -746,12 +746,13 @@ footer {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    border: 1px solid #f0f0f0;
+    border: 1px solid #eef2f5;
 }
 
 .category-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    background-color: #fff; /* 滑鼠移上時變回白色 */
 }
 
 .category-card img {
