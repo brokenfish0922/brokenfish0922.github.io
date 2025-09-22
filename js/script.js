@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     // --- Intersection Observer for Fade-In Animation ---
-    const faders = document.querySelectorAll('.fade-in-section');
+    const faders = document.querySelectorAll('.fade-in-section, .timeline-item'); // <== 修改處：讓 .timeline-item 也具備淡入效果
 
     const appearOptions = {
         threshold: 0.15, // 元素進入畫面 15% 時觸發
@@ -139,6 +139,47 @@ document.addEventListener('DOMContentLoaded', () => {
     faders.forEach(fader => {
         appearOnScroll.observe(fader);
     });
+
+    // === AI 整合新增功能: 內容切換函式 ===
+    window.showContent = function(contentType) {
+        // 隱藏所有內容區塊
+        document.querySelectorAll('.content-area').forEach(area => {
+            area.classList.remove('active');
+        });
+        // 移除所有按鈕的啟用狀態
+        document.querySelectorAll('.selector-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // 顯示指定的內容區塊
+        const activeArea = document.getElementById(contentType);
+        if (activeArea) {
+            activeArea.classList.add('active');
+        }
+        
+        // 將啟用狀態加到被點擊的按鈕上
+        // 使用 event.currentTarget 確保點擊圖示也能正確找到按鈕
+        const clickedButton = event.currentTarget;
+        if(clickedButton) {
+            clickedButton.classList.add('active');
+        }
+    }
+    
+    // 手動將事件監聽器綁定到按鈕上，取代 HTML 中的 onclick
+    document.querySelectorAll('.selector-btn').forEach(button => {
+        // 取得按鈕上 onclick 屬性的值，例如 'showContent("itinerary")'
+        const onclickValue = button.getAttribute('onclick');
+        // 從中提取出參數，例如 "itinerary"
+        const contentType = onclickValue.match(/"(.*?)"/)[1];
+        // 移除 onclick 屬性
+        button.removeAttribute('onclick');
+        // 綁定點擊事件
+        button.addEventListener('click', (event) => {
+            showContent(contentType);
+        });
+    });
+
+  
     // --- Generate Table of Contents ---
     function generateTOC() {
         const content = document.querySelector('.entry-content');
