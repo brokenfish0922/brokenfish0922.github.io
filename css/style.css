@@ -1690,3 +1690,199 @@ footer {
     font-size: 14px;
     z-index: 10;
 }
+
+/* --- AI 整合新增樣式 --- */
+
+/* 內容選擇器 (分頁按鈕) */
+.content-selector {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* 按鈕間距 */
+    margin-bottom: 2.5rem; /* 與下方內容的距離 */
+    flex-wrap: wrap; /* 在小螢幕上自動換行 */
+}
+
+.selector-btn {
+    background-color: var(--white);
+    color: var(--text-dark);
+    border: 2px solid var(--primary-blue);
+    padding: 12px 25px;
+    border-radius: 30px; /* 圓角膠囊形狀 */
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.selector-btn:hover {
+    background-color: var(--primary-bg);
+    border-color: var(--darker-blue);
+    transform: translateY(-2px);
+}
+
+.selector-btn.active {
+    background-color: var(--accent-coral);
+    color: var(--white);
+    border-color: var(--accent-coral);
+    box-shadow: 0 4px 12px rgba(255, 127, 80, 0.3);
+}
+
+.selector-btn i {
+    margin-right: 8px; /* 圖示與文字的間距 */
+}
+
+/* 內容顯示區域 */
+.content-area {
+    display: none; /* 預設隱藏 */
+    animation: fadeIn 0.6s ease; /* 套用淡入動畫 */
+}
+
+.content-area.active {
+    display: block; /* 被選中的區域則顯示 */
+}
+
+/* 淡入動畫 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 時間軸樣式 */
+.timeline {
+    position: relative;
+    margin: 2rem auto;
+    padding: 2rem 0;
+    max-width: 800px;
+}
+
+/* 中間的垂直線 */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: var(--primary-blue);
+    transform: translateX(-50%);
+    border-radius: 3px;
+}
+
+.timeline-item {
+    position: relative;
+    margin: 2rem 0;
+    width: 50%;
+    padding: 10px 40px;
+    opacity: 0; /* 預設透明，用於滾動動畫 */
+    transform: translateY(30px); /* 預設下移，用於滾動動畫 */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.timeline-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 左側項目 */
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+/* 右側項目 */
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+/* 內容區塊 */
+.timeline-content {
+    background: var(--white);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    position: relative;
+}
+
+/* 內容區塊的箭頭 */
+.timeline-item:nth-child(odd) .timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: -15px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--white);
+}
+
+.timeline-item:nth-child(even) .timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -15px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent var(--white) transparent transparent;
+}
+
+
+/* 時間軸上的圓點 */
+.timeline-dot {
+    position: absolute;
+    left: -48px;
+    top: 20px;
+    width: 18px;
+    height: 18px;
+    background: var(--accent-coral);
+    border: 4px solid var(--primary-bg);
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -49px; /* 修正偶數項目的圓點位置 */
+}
+
+.day-number {
+    font-family: var(--font-headings);
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--darker-blue);
+    margin-bottom: 0.2em;
+}
+
+.day-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.8em;
+}
+
+.day-description {
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+/* 時間軸響應式設計 */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px; /* 將垂直線移到左邊 */
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        left: 0;
+        padding-left: 70px; /* 增加左邊距，為圓點和箭頭留出空間 */
+        padding-right: 15px;
+    }
+    
+    .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 22px; /* 將圓點放到垂直線上 */
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::after,
+    .timeline-item:nth-child(even) .timeline-content::after {
+        left: -15px; /* 將箭頭統一指向左邊 */
+        border-color: transparent var(--white) transparent transparent;
+    }
+}
