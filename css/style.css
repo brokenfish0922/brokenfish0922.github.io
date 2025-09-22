@@ -1272,19 +1272,20 @@ footer {
 }
 
 .food-card {
-    background-color: var(--card-bg);
+    background-color: #f8f9fa;
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
     overflow: hidden; /* 確保圖片圓角生效 */
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     border: 1px solid var(--border-color); /* 增加一個細微的邊框，提升質感 */
 }
 
 .food-card:hover {
     transform: translateY(-8px); /* 滑鼠懸停時卡片輕微上浮 */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* 讓卡片在 hover 時變亮 */
 }
 
 .food-card-image-wrapper {
