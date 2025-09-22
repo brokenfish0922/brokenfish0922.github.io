@@ -417,3 +417,153 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// 照片輪播功能
+document.addEventListener('DOMContentLoaded', function() {
+    let currentPhotoIndex = 0;
+    const totalPhotos = 10;
+    
+    // 手機版照片資訊顯示切換
+    function togglePhotoInfo() {
+        const currentPhotoInfo = document.querySelectorAll('.carousel-image')[currentPhotoIndex].querySelector('.photo-info');
+        currentPhotoInfo.classList.toggle('show');
+    }
+    
+    // 切換照片時隱藏資訊（手機版）
+    function hidePhotoInfo() {
+        const allPhotoInfos = document.querySelectorAll('.photo-info');
+        allPhotoInfos.forEach(info => info.classList.remove('show'));
+    }
+    
+    // 更新照片顯示
+    function updatePhotoDisplay() {
+        // 隱藏所有照片
+        const images = document.querySelectorAll('.carousel-image');
+        images.forEach(img => img.classList.remove('active'));
+        
+        // 顯示當前照片
+        images[currentPhotoIndex].classList.add('active');
+        
+        // 更新縮略圖
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        thumbnails.forEach(thumb => thumb.classList.remove('active'));
+        thumbnails[currentPhotoIndex].classList.add('active');
+        
+        // 更新指示器
+        const indicators = document.querySelectorAll('.indicator');
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        indicators[currentPhotoIndex].classList.add('active');
+        
+        // 更新計數器
+        document.getElementById('current-photo').textContent = currentPhotoIndex + 1;
+        
+        // 切換照片時隱藏照片資訊（手機版）
+        hidePhotoInfo();
+    }
+    
+    // 切換照片
+    function changePhoto(direction) {
+        currentPhotoIndex += direction;
+        
+        // 循環處理
+        if (currentPhotoIndex >= totalPhotos) {
+            currentPhotoIndex = 0;
+        } else if (currentPhotoIndex < 0) {
+            currentPhotoIndex = totalPhotos - 1;
+        }
+        
+        updatePhotoDisplay();
+    }
+    
+    // 直接跳轉到指定照片
+    function goToPhoto(index) {
+        currentPhotoIndex = index;
+        updatePhotoDisplay();
+    }
+    
+    // 自動播放功能
+    let autoPlayInterval;
+    
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            changePhoto(1);
+        }, 4000); // 每4秒切換一次
+    }
+    
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+    
+    // 事件監聽器設定
+    function setupEventListeners() {
+        // 左右切換按鈕
+        document.querySelector('.carousel-btn.prev').addEventListener('click', () => changePhoto(-1));
+        document.querySelector('.carousel-btn.next').addEventListener('click', () => changePhoto(1));
+        
+        // 手機版資訊按鈕
+        const infoToggle = document.querySelector('.info-toggle');
+        if (infoToggle) {
+            infoToggle.addEventListener('click', togglePhotoInfo);
+        }
+        
+        // 縮略圖點擊
+        document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+            thumb.addEventListener('click', () => goToPhoto(index));
+        });
+        
+        // 指示器點擊
+        document.querySelectorAll('.indicator').forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToPhoto(index));
+        });
+        
+        // 滑鼠懸停控制自動播放
+        const carousel = document.getElementById('aquarium-carousel');
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
+        
+        // 鍵盤控制
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                changePhoto(-1);
+            } else if (e.key === 'ArrowRight') {
+                changePhoto(1);
+            }
+        });
+        
+        // 觸摸手勢支援（移動設備）
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    changePhoto(1); // 向左滑動，下一張
+                } else {
+                    changePhoto(-1); // 向右滑動，上一張
+                }
+            }
+        }
+    }
+    
+    // 初始化
+    function init() {
+        document.getElementById('total-photos').textContent = totalPhotos;
+        setupEventListeners();
+        startAutoPlay();
+    }
+    
+    // 啟動輪播功能
+    init();
+});
