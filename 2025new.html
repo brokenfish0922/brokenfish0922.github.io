@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025四國之旅 - 47制霸中</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="index.html" class="logo">
+            <i class="fas fa-map-signs"></i> 47制霸中
+        </a>
+        <nav class="main-nav">
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul>
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="trips-archive.html" class="active">所有旅程</a></li>
+                <li><a href="about.html">關於我</a></li>
+                <li><a href="contact.html">聯絡我</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container section-padding">
+    <!-- 麵包屑導覽 -->
+    <div class="breadcrumbs">
+        <a href="index.html">首頁</a>
+        <span>&gt;</span>
+        <a href="trips-archive.html">所有旅程</a>
+        <span>&gt;</span>
+        <span>2025四國之旅</span>
+    </div>
+
+    <article class="single-post-content">
+        <header class="post-header">
+            <h1>2025四國之旅</h1>
+            <div class="post-meta">
+                <span><i class="far fa-calendar-alt"></i> 2025年9月14日</span>
+                <span><i class="fas fa-user"></i> 破魚</span>
+            </div>
+        </header>
+
+        <!-- === AI 設計整合開始 === -->
+        
+        <!-- 內容選擇器 (Tab Buttons) -->
+        <div class="content-selector">
+            <button class="selector-btn active" onclick="showContent('itinerary')"><i class="fas fa-route"></i> 行程總覽</button>
+            <button class="selector-btn" onclick="showContent('food')"><i class="fas fa-utensils"></i> 食旅漫記</button>
+            <button class="selector-btn" onclick="showContent('sights')"><i class="fas fa-mountain-sun"></i> 途中風光</button>
+            <button class="selector-btn" onclick="showContent('others')"><i class="fas fa-box-archive"></i> 旅途拾遺</button>
+        </div>
+
+        <!-- 內容區域 (Content Area) -->
+        
+        <!-- 1. 行程總覽 (時間軸) -->
+        <div class="content-area active" id="itinerary">
+            <div class="timeline">
+                <!-- Day 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="day-number">Day 1</div>
+                        <div class="day-title">初抵高松，烏龍麵的洗禮</div>
+                        <div class="day-description">
+                            抵達高松機場，前往市區飯店Check-in。晚餐在車站附近品嚐道地的讚岐烏龍麵，感受香川的靈魂美食。
+                        </div>
+                    </div>
+                </div>
+                <!-- Day 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="day-number">Day 2</div>
+                        <div class="day-title">藝術之島，直島的文藝氣息</div>
+                        <div class="day-description">
+                            搭乘渡輪前往直島，參觀地中美術館、草間彌生的南瓜，享受被藝術環繞的一天。
+                        </div>
+                    </div>
+                </div>
+                 <!-- Day 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="day-number">Day 3</div>
+                        <div class="day-title">松山城下，道後溫泉鄉</div>
+                        <div class="day-description">
+                           移動至愛媛縣松山市，下午登上松山城，傍晚在擁有三千年歷史的道後溫泉放鬆身心。
+                        </div>
+                    </div>
+                </div>
+                <!-- 更多天數... -->
+            </div>
+        </div>
+        
+        <!-- 2. 食旅漫記 (沿用您原有的卡片) -->
+        <div class="content-area" id="food">
+             <div class="category-grid">
+                <!-- 讚岐烏龍麵巡禮 -->
+                <div class="category-card">
+                    <img src="images/udonintro.png" alt="讚岐烏龍麵巡禮">
+                    <h4>讚岐烏龍麵巡禮</h4>
+                    <a href="category-shikoku-udon.html" class="btn">繼續閱讀</a>
+                </div>
+                <!-- 愛媛鯛魚飯 -->
+                <div class="category-card">
+                    <img src="images/20250816-akitai.jpg" alt="愛媛鯛魚飯">
+                    <h4>愛媛鯛魚飯</h4>
+                    <a href="category-taimeshi.html" class="btn">繼續閱讀</a>
+                </div>
+                <!-- 在地美食 -->
+                <div class="category-card">
+                    <img src="images/20250817-goichi.jpg" alt="在地美食">
+                    <h4>在地美食</h4>
+                    <a href="category-local-food.html" class="btn">繼續閱讀</a>
+                </div>
+                <!-- 咖啡與甜點 -->
+                <div class="category-card">
+                    <img src="images/20250814-minami.jpg" alt="咖啡與甜點">
+                    <h4>咖啡與甜點</h4>
+                    <a href="category-coffee.html" class="btn">繼續閱讀</a>
+                </div>
+                <!-- 觀光景點區美食 -->
+                <div class="category-card">
+                    <img src="images/20250816-karari.jpg" alt="觀光景點區美食">
+                    <h4>觀光景點區美食</h4>
+                    <a href="category-spot-food.html" class="btn">繼續閱讀</a>
+                </div>
+                <!-- 零食大集合 -->
+                <div class="category-card">
+                    <img src="images/okasi.png" alt="零食大集合">
+                    <h4>零食大集合</h4>
+                    <a href="okasi.html" class="btn">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 途中風光 (沿用您原有的卡片) -->
+        <div class="content-area" id="sights">
+            <div class="category-grid">
+                <!-- 神社與寺廟 -->
+                <div class="category-card">
+                    <img src="image2025/36/01.png" alt="神社與寺廟">
+                    <h4>神社與寺廟</h4>
+                    <a href="2025shigoku/category-jinja.html" class="btn">繼續閱讀</a>
+                </div>
+                <!-- 古蹟與老街 -->
+                <div class="category-card">
+                    <img src="images/udonintro.png" alt="古蹟與老街">
+                    <h4>古蹟與老街</h4>
+                    <a href="category-shikoku-udon.html" class="btn">繼續閱讀</a>
+                </div>
+                <!-- 自然風景與觀光景點 -->
+                <div class="category-card">
+                    <img src="images/udonintro.png" alt="自然風景與觀光景點">
+                    <h4>自然風景與觀光景點</h4>
+                    <a href="category-shikoku-udon.html" class="btn">繼續閱讀</a>
+                </div>
+                <!-- 商店街與購物中心 -->
+                <div class="category-card">
+                    <img src="images/udonintro.png" alt="商店街與購物中心">
+                    <h4>商店街與購物中心</h4>
+                    <a href="category-shikoku-udon.html" class="btn">繼續閱讀</a>
+                </div>
+                <!-- 展覽場館 -->
+                <div class="category-card">
+                    <img src="images/udonintro.png" alt="展覽場館">
+                    <h4>展覽場館</h4>
+                    <a href="category-shikoku-udon.html" class="btn">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 旅途拾遺 (沿用您原有的卡片) -->
+        <div class="content-area" id="others">
+            <div class="category-grid">
+                <!-- 無法分類的旅途記憶 -->
+                <div class="category-card">
+                    <img src="images/udonintro.png" alt="無法分類的旅途記憶">
+                    <h4>無法分類的旅途記憶</h4>
+                    <a href="category-shikoku-udon.html" class="btn">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- === AI 設計整合結束 === -->
+
+    </article>
+
+    <!-- 留言板 -->
+    <section id="comments">
+      <h2>留言板</h2>
+      <form id="commentForm">
+        <input type="text" id="name" placeholder="暱稱" required>
+        <textarea id="message" placeholder="分享你的想法..." required></textarea>
+        <button type="submit">送出留言</button>
+      </form>
+    
+      <div id="commentList"></div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <p>© 2025 47制霸中. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/brokenfish7/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/brokenfish7?igsh=MTg4bDdlM21pcTNsbQ==" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <button id="backToTopBtn" title="回到頂部"><i class="fas fa-arrow-up"></i></button>
+    </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
