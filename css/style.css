@@ -1697,9 +1697,9 @@ footer {
 .content-selector {
     display: flex;
     justify-content: center;
-    gap: 15px; /* 按鈕間距 */
-    margin-bottom: 2.5rem; /* 與下方內容的距離 */
-    flex-wrap: wrap; /* 在小螢幕上自動換行 */
+    gap: 15px;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
 }
 
 .selector-btn {
@@ -1707,7 +1707,7 @@ footer {
     color: var(--text-dark);
     border: 2px solid var(--primary-blue);
     padding: 12px 25px;
-    border-radius: 30px; /* 圓角膠囊形狀 */
+    border-radius: 30px;
     cursor: pointer;
     font-weight: 600;
     font-size: 1em;
@@ -1728,50 +1728,53 @@ footer {
 }
 
 .selector-btn i {
-    margin-right: 8px; /* 圖示與文字的間距 */
+    margin-right: 8px;
 }
 
 /* 內容顯示區域 */
 .content-area {
-    display: none; /* 預設隱藏 */
-    animation: fadeIn 0.6s ease; /* 套用淡入動畫 */
+    display: none;
+    animation: fadeIn 0.6s ease;
 }
 
 .content-area.active {
-    display: block; /* 被選中的區域則顯示 */
+    display: block;
 }
 
-/* 淡入動畫 */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* 時間軸樣式 */
+/* 
+==============================================
+    全新、乾淨的時間軸樣式 (從這裡開始)
+==============================================
+*/
+
 .timeline {
     position: relative;
+    max-width: 800px;
     margin: 2rem auto;
     padding: 2rem 0;
-    max-width: 800px;
 }
 
-/* 中間的垂直線 */
+/* 中間的垂直線 (桌面版) */
 .timeline::before {
     content: '';
     position: absolute;
-    left: 50%;
     top: 0;
     bottom: 0;
+    left: 50%;
     width: 3px;
     background-color: var(--primary-blue);
     transform: translateX(-50%);
     border-radius: 3px;
 }
 
-/* timeline-item 現在是全寬容器，我們不去動它 */
 .timeline-item {
     position: relative;
-    margin: 2.5rem 0; /* 加大垂直間距 */
+    margin: 2.5rem 0;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -1782,15 +1785,21 @@ footer {
     transform: translateY(0);
 }
 
-/* 內容區塊 (卡片) */
+/* 清除浮動 */
+.timeline-item::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .timeline-content {
     position: relative;
-    width: calc(50% - 40px); /* 卡片寬度為一半再減去間距 */
+    width: calc(50% - 40px);
     background: var(--white);
-    padding: 25px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
     border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--card-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
@@ -1800,57 +1809,55 @@ footer {
     border-color: var(--primary-blue);
 }
 
-/* 【核心修正】使用 margin 將卡片推到左右兩側 */
+/* 桌面版：左側卡片 */
 .timeline-item:nth-child(odd) .timeline-content {
-    float: left; /* 左浮動 */
+    float: left;
 }
 
+/* 桌面版：右側卡片 */
 .timeline-item:nth-child(even) .timeline-content {
-    float: right; /* 右浮動 */
-}
-/* 清除浮動，避免父元素高度塌陷 */
-.timeline-item::after {
-    content: "";
-    display: table;
-    clear: both;
+    float: right;
 }
 
-
-/* --- 卡片箭頭樣式 (維持不變) --- */
-.timeline-item:nth-child(odd) .timeline-content::after {
+/* --- 乾淨的箭頭樣式 --- */
+.timeline-content::after {
     content: '';
     position: absolute;
     top: 20px;
-    right: -15px;
-    border-width: 10px;
-    border-style: solid;
-    border-left-color: var(--border-color);
-    transition: border-color 0.3s ease;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent; /* 關鍵：設定四邊透明 */
 }
+
+/* 桌面版：左側卡片的箭頭 (指向右邊) */
+.timeline-item:nth-child(odd) .timeline-content::after {
+    left: 100%; /* 從卡片右側出來 */
+    border-left-color: var(--border-color); /* 為左邊框上色，形成指向右的箭頭 */
+    transition: border-left-color 0.3s ease;
+}
+
 .timeline-item:nth-child(odd) .timeline-content:hover::after {
     border-left-color: var(--primary-blue);
 }
 
+/* 桌面版：右側卡片的箭頭 (指向左邊) */
 .timeline-item:nth-child(even) .timeline-content::after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: -15px;
-    border-width: 10px;
-    border-style: solid;
-    border-right-color: var(--border-color);
-    transition: border-color 0.3s ease;
+    right: 100%; /* 從卡片左側出來 */
+    border-right-color: var(--border-color); /* 為右邊框上色，形成指向左的箭頭 */
+    transition: border-right-color 0.3s ease;
 }
+
 .timeline-item:nth-child(even) .timeline-content:hover::after {
     border-right-color: var(--primary-blue);
 }
 
-/* --- 【核心修正】圓點的定位 --- */
+
+/* --- 圓點樣式 (維持不變) --- */
 .timeline-dot {
     position: absolute;
     top: 20px;
-    left: 50%; /* 定位在父層(全寬)的中間 */
-    transform: translateX(-50%); /* 透過 transform 讓自己精準置中 */
+    left: 50%;
+    transform: translateX(-50%);
     width: 20px;
     height: 20px;
     background: var(--primary-bg);
@@ -1872,6 +1879,8 @@ footer {
     border-radius: 50%;
 }
 
+
+/* --- 卡片內文字樣式 --- */
 .day-number {
     font-family: var(--font-headings);
     font-size: 1.5em;
@@ -1892,12 +1901,21 @@ footer {
     line-height: 1.7;
 }
 
-/* --- 手機版響應式 (維持不變) --- */
-media (max-width: 768px) {
+
+/* 
+==============================================
+    乾淨的響應式樣式 (手機版)
+==============================================
+*/
+@media (max-width: 768px) {
+
+    /* 手機版：時間軸線移到左邊 */
     .timeline::before {
         left: 20px;
+        transform: none;
     }
 
+    /* 手機版：卡片統一在右側，寬度自動 */
     .timeline-content {
         width: auto;
         float: none;
@@ -1905,42 +1923,24 @@ media (max-width: 768px) {
         margin-right: 0;
     }
 
+    /* 手機版：圓點移到左邊的時間軸線上 */
     .timeline-dot {
         left: 20px;
-        transform: translateX(-50%);
     }
 
-    /* --- 核心修正：統一處理所有手機版箭頭的基礎樣式 --- */
+    /* 手機版：統一所有箭頭樣式 */
     .timeline-item:nth-child(odd) .timeline-content::after,
     .timeline-item:nth-child(even) .timeline-content::after {
-        /*
-         * 問題1修正：精準定位
-         * 箭頭偽元素的總寬度是 border-left(10px) + border-right(10px) = 20px。
-         * 將其向左移動20px，即可讓箭頭的「底邊」剛好貼齊卡片的左邊框。
-         */
-        left: -20px; 
-        right: auto; /* 強制清除桌面版遺留的 right 定位 */
-        
-        /* 統一設定箭頭指向左邊 */
-        border-color: transparent var(--border-color) transparent transparent;
-        
-        /* 強制清除桌面版奇數項目的左邊框顏色 */
-        border-left-color: transparent;
-
+        right: 100%; /* 所有箭頭都從左側出來 */
+        left: auto;
+        border-right-color: var(--border-color); /* 都指向左邊 */
+        border-left-color: transparent; /* 強制清除桌面版樣式 */
         transition: border-right-color 0.3s ease;
     }
-    
-    /* --- 核心修正：統一處理所有手機版箭頭的懸浮樣式 --- */
+
     .timeline-item:nth-child(odd) .timeline-content:hover::after,
     .timeline-item:nth-child(even) .timeline-content:hover::after {
-        /* 懸浮時，只改變我們需要的右邊框顏色 */
         border-right-color: var(--primary-blue);
-
-        /*
-         * 問題2修正：移除鬼影箭頭
-         * 在懸浮狀態下，再次強制聲明左邊框是透明的。
-         * 這會覆蓋掉桌面版的:hover樣式，防止不該出現的箭頭顯示出來。
-         */
-        border-left-color: transparent;
+        border-left-color: transparent; /* 強制清除桌面版樣式 */
     }
 }
