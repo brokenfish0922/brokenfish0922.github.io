@@ -1,4 +1,4 @@
-// --- 這是修正後的 script.js ---
+// --- 這是最終修正後的 script.js ---
 
 const API_URL = "https://script.google.com/macros/s/AKfycbz3m96hBGXd17144khL3jse4qS-Wo4kGi6X1-RWUW48p71jx8cOPXPlK1LVkHj-4m-TLg/exec"; 
 const PAGE_ID = window.location.pathname;
@@ -221,8 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. 留言板功能初始化
     const commentForm = document.getElementById("commentForm");
-    const commentList = document.getElementById("commentList");
-
     if (commentForm) {
       commentForm.addEventListener("submit", async e => {
         e.preventDefault();
@@ -253,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    if (commentList) {
+    if (document.getElementById("commentList")) {
       loadComments();
     }
 
@@ -291,65 +289,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. 滾動淡入動畫
     const faders = document.querySelectorAll('.fade-in-section, .timeline-item');
-    const appearOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
-    };
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                appearOnScroll.unobserve(entry.target);
+    if (faders.length > 0) {
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    }
+
+    // 5. 標籤頁切換功能
+    if (document.querySelector('.content-selector')) {
+        function showTab(contentType) {
+            const validTabs = ['itinerary', 'food', 'sights', 'others'];
+            if (!validTabs.includes(contentType)) {
+                contentType = 'itinerary';
+            }
+
+            document.querySelectorAll('.content-area').forEach(area => area.classList.remove('active'));
+            document.querySelectorAll('.selector-btn').forEach(btn => btn.classList.remove('active'));
+
+            const activeContent = document.getElementById(contentType);
+            if (activeContent) {
+                activeContent.classList.add('active');
+            }
+
+            const activeButton = document.querySelector(`.selector-btn[data-content-type='${contentType}']`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+        }
+
+        function handleStateChange() {
+            const contentType = window.location.hash.substring(1) || 'itinerary';
+            showTab(contentType);
+        }
+
+        document.querySelectorAll('.selector-btn').forEach(button => {
+            const onclickValue = button.getAttribute('onclick');
+            if (onclickValue) {
+                const match = onclickValue.match(/'(.*?)'/);
+                if (match && match[1]) {
+                    const contentType = match[1];
+                    button.dataset.contentType = contentType;
+                    button.removeAttribute('onclick');
+                    button.addEventListener('click', () => {
+                        window.location.hash = contentType;
+                    });
+                }
             }
         });
-    }, appearOptions);
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
 
-    // 5. 【核心修正】標籤頁切換功能
-    function showTab(contentType) {
-        const validTabs = ['itinerary', 'food', 'sights', 'others'];
-        if (!validTabs.includes(contentType)) {
-            contentType = 'itinerary';
-        }
-
-        document.querySelectorAll('.content-area').forEach(area => area.classList.remove('active'));
-        document.querySelectorAll('.selector-btn').forEach(btn => btn.classList.remove('active'));
-
-        const activeContent = document.getElementById(contentType);
-        if (activeContent) {
-            activeContent.classList.add('active');
-        }
-
-        const activeButton = document.querySelector(`.selector-btn[data-content-type='${contentType}']`);
-        if (activeButton) {
-            activeButton.classList.add('active');
-        }
+        window.addEventListener('hashchange', handleStateChange);
+        handleStateChange();
     }
-
-    function handleStateChange() {
-        const contentType = window.location.hash.substring(1) || 'itinerary';
-        showTab(contentType);
-    }
-
-    document.querySelectorAll('.selector-btn').forEach(button => {
-        const onclickValue = button.getAttribute('onclick');
-        if (onclickValue) {
-            const match = onclickValue.match(/'(.*?)'/);
-            if (match && match[1]) {
-                const contentType = match[1];
-                button.dataset.contentType = contentType;
-                button.removeAttribute('onclick');
-                button.addEventListener('click', () => {
-                    window.location.hash = contentType;
-                });
-            }
-        }
-    });
-
-    window.addEventListener('hashchange', handleStateChange);
-    handleStateChange(); // 頁面初次載入時執行
 
     // 6. 自動生成文章目錄
     function generateTOC() {
@@ -389,35 +391,154 @@ document.addEventListener('DOMContentLoaded', () => {
         const foodImages = document.querySelectorAll('.food-card-image-wrapper img');
         const closeBtn = document.querySelector('.lightbox-close');
 
-        foodImages.forEach(image => {
-            image.addEventListener('click', () => {
-                lightbox.style.display = 'block';
-                lightboxImg.src = image.src;
+        if (lightboxImg && foodImages.length > 0 && closeBtn) {
+            foodImages.forEach(image => {
+                image.addEventListener('click', () => {
+                    lightbox.style.display = 'block';
+                    lightboxImg.src = image.src;
+                });
             });
-        });
 
-        const closeLightbox = () => {
-            lightbox.style.display = 'none';
-        }
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeLightbox);
-        }
-        lightbox.addEventListener('click', (event) => {
-            if (event.target === lightbox) {
-                closeLightbox();
+            const closeLightbox = () => {
+                lightbox.style.display = 'none';
             }
-        });
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+        }
     }
 
     // 10. 照片輪播
     const carousel = document.getElementById('aquarium-carousel');
     if (carousel) {
         let currentPhotoIndex = 0;
-        const photoImages = carousel.querySelectorAll('.carousel-image');
-        const totalPhotos = photoImages.length;
+        const images = carousel.querySelectorAll('.carousel-image');
+        const totalPhotos = images.length;
+        
         if (totalPhotos > 0) {
-            // ... (此處省略輪播功能的詳細程式碼，因為它很長且與目前問題無關)
-            // 確保您的照片輪播完整邏輯放在這裡
+            // --- 輪播功能完整邏輯開始 ---
+
+            // 手機版照片資訊顯示切換
+            function togglePhotoInfo() {
+                const currentPhotoInfo = images[currentPhotoIndex].querySelector('.photo-info');
+                currentPhotoInfo.classList.toggle('show');
+            }
+            
+            // 切換照片時隱藏資訊（手機版）
+            function hidePhotoInfo() {
+                const allPhotoInfos = document.querySelectorAll('.photo-info');
+                allPhotoInfos.forEach(info => info.classList.remove('show'));
+            }
+            
+            // 更新照片顯示
+            function updatePhotoDisplay() {
+                images.forEach(img => img.classList.remove('active'));
+                images[currentPhotoIndex].classList.add('active');
+                
+                const thumbnails = document.querySelectorAll('.thumbnail');
+                if (thumbnails.length === totalPhotos) {
+                    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                    thumbnails[currentPhotoIndex].classList.add('active');
+                }
+                
+                const indicators = document.querySelectorAll('.indicator');
+                if (indicators.length === totalPhotos) {
+                    indicators.forEach(indicator => indicator.classList.remove('active'));
+                    indicators[currentPhotoIndex].classList.add('active');
+                }
+                
+                const currentPhotoCounter = document.getElementById('current-photo');
+                if (currentPhotoCounter) {
+                    currentPhotoCounter.textContent = currentPhotoIndex + 1;
+                }
+                
+                hidePhotoInfo();
+            }
+            
+            // 切換照片
+            function changePhoto(direction) {
+                currentPhotoIndex += direction;
+                if (currentPhotoIndex >= totalPhotos) {
+                    currentPhotoIndex = 0;
+                } else if (currentPhotoIndex < 0) {
+                    currentPhotoIndex = totalPhotos - 1;
+                }
+                updatePhotoDisplay();
+            }
+            
+            // 直接跳轉到指定照片
+            function goToPhoto(index) {
+                currentPhotoIndex = index;
+                updatePhotoDisplay();
+            }
+            
+            let autoPlayInterval;
+            
+            function startAutoPlay() {
+                stopAutoPlay(); // 先清除既有的，避免重複
+                autoPlayInterval = setInterval(() => {
+                    changePhoto(1);
+                }, 4000);
+            }
+            
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
+            }
+            
+            // 事件監聽器設定
+            function setupEventListeners() {
+                document.querySelector('.carousel-btn.prev')?.addEventListener('click', () => changePhoto(-1));
+                document.querySelector('.carousel-btn.next')?.addEventListener('click', () => changePhoto(1));
+                
+                document.querySelector('.info-toggle')?.addEventListener('click', togglePhotoInfo);
+                
+                document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+                    thumb.addEventListener('click', () => goToPhoto(index));
+                });
+                
+                document.querySelectorAll('.indicator').forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => goToPhoto(index));
+                });
+                
+                carousel.addEventListener('mouseenter', stopAutoPlay);
+                carousel.addEventListener('mouseleave', startAutoPlay);
+                
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') changePhoto(-1);
+                    if (e.key === 'ArrowRight') changePhoto(1);
+                });
+                
+                let touchStartX = 0;
+                carousel.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+                
+                carousel.addEventListener('touchend', (e) => {
+                    let touchEndX = e.changedTouches[0].screenX;
+                    const swipeThreshold = 50;
+                    const diff = touchStartX - touchEndX;
+                    if (Math.abs(diff) > swipeThreshold) {
+                        changePhoto(diff > 0 ? 1 : -1);
+                    }
+                }, { passive: true });
+            }
+            
+            // 初始化
+            function init() {
+                const totalPhotosCounter = document.getElementById('total-photos');
+                if(totalPhotosCounter) {
+                    totalPhotosCounter.textContent = totalPhotos;
+                }
+                setupEventListeners();
+                startAutoPlay();
+            }
+            
+            init();
+            
+            // --- 輪播功能完整邏輯結束 ---
         }
     }
 });
