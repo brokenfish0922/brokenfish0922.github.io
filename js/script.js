@@ -141,43 +141,75 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // === AI 整合新增功能: 內容切換函式 ===
-    window.showContent = function(contentType) {
-        // 隱藏所有內容區塊
-        document.querySelectorAll('.content-area').forEach(area => {
-            area.classList.remove('active');
-        });
-        // 移除所有按鈕的啟用狀態
-        document.querySelectorAll('.selector-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
+    // ===================================================================
+    // === 標籤頁狀態管理修改開始 (AI 整合) ===
+    // ===================================================================
+
+    // 作用：根據傳入的ID，顯示對應的標籤頁內容和按鈕狀態
+    function showTab(contentType) {
+        const validTabs = ['itinerary', 'food', 'sights', 'others'];
+        // 如果傳入的 contentType 無效 (例如空的 hash 或亂打的)，就預設為第一個
+        if (!validTabs.includes(contentType)) {
+            contentType = 'itinerary';
+        }
+
+        // 先隱藏所有的內容區塊，並移除所有按鈕的 active 狀態
+        document.querySelectorAll('.content-area').forEach(area => area.classList.remove('active'));
+        document.querySelectorAll('.selector-btn').forEach(btn => btn.classList.remove('active'));
 
         // 顯示指定的內容區塊
-        const activeArea = document.getElementById(contentType);
-        if (activeArea) {
-            activeArea.classList.add('active');
+        const activeContent = document.getElementById(contentType);
+        if (activeContent) {
+            activeContent.classList.add('active');
         }
-        
-        // 將啟用狀態加到被點擊的按鈕上
-        // 使用 event.currentTarget 確保點擊圖示也能正確找到按鈕
-        const clickedButton = event.currentTarget;
-        if(clickedButton) {
-            clickedButton.classList.add('active');
+
+        // 啟用對應的按鈕 (透過我們等下設定的 data-content-type 屬性來尋找)
+        const activeButton = document.querySelector(`.selector-btn[data-content-type='${contentType}']`);
+        if (activeButton) {
+            activeButton.classList.add('active');
         }
     }
-    
-    // 手動將事件監聽器綁定到按鈕上，取代 HTML 中的 onclick
+
+    // 作用：讀取目前 URL 的 hash 值，並呼叫 showTab 函式來更新頁面
+    function handleStateChange() {
+        // window.location.hash 會回傳 #food，.substring(1) 則是去除 #
+        // 如果 hash 是空的，就預設為 'itinerary'
+        const contentType = window.location.hash.substring(1) || 'itinerary';
+        showTab(contentType);
+    }
+
+    // 初始化所有標籤按鈕
     document.querySelectorAll('.selector-btn').forEach(button => {
-        // 取得按鈕上 onclick 屬性的值，例如 'showContent("itinerary")'
         const onclickValue = button.getAttribute('onclick');
-        // 從中提取出參數，例如 "itinerary"
-        const contentType = onclickValue.match(/"(.*?)"/)[1];
-        // 移除 onclick 屬性
-        button.removeAttribute('onclick');
-        // 綁定點擊事件
-        button.addEventListener('click', (event) => {
-            showContent(contentType);
-        });
+        if (onclickValue) {
+            // 從 "showContent('itinerary')" 中，抽取出 'itinerary'
+            const match = onclickValue.match(/"(.*?)"/);
+            if (match && match[1]) {
+                const contentType = match[1];
+                // 為了方便之後能找到按鈕，我們將 contentType 存放在 data-* 屬性中
+                button.dataset.contentType = contentType;
+                // 移除會直接呼叫舊函式的 onclick 屬性
+                button.removeAttribute('onclick');
+
+                // 加上新的點擊事件監聽
+                button.addEventListener('click', () => {
+                    // 點擊按鈕時，我們只更新 URL 的 hash
+                    // 這個動作會觸發下面的 'hashchange' 事件，進而更新頁面
+                    window.location.hash = contentType;
+                });
+            }
+        }
     });
+
+    // 監聽 URL hash 的變化 (例如使用者點擊瀏覽器的上一頁/下一頁按鈕)
+    window.addEventListener('hashchange', handleStateChange);
+
+    // 在頁面第一次載入時，就檢查 URL 是否有 hash，並顯示對應的標籤頁
+    handleStateChange();
+
+    // ===================================================================
+    // === 標籤頁狀態管理修改結束 ===
+    // ===================================================================
 
   
     // --- Generate Table of Contents ---
