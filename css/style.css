@@ -1895,33 +1895,43 @@ footer {
 /* --- 手機版響應式 (維持不變) --- */
 @media (max-width: 768px) {
     .timeline::before {
-        left: 20px; /* 將垂直線移到左邊 */
+        left: 20px;
     }
 
     .timeline-content {
-        width: auto; /* 寬度自動 */
-        float: none; /* 在手機上不需要浮動 */
-        margin-left: 50px; /* 將所有卡片推到線的右邊 */
-        margin-right: 0; /* 清除右邊 margin */
+        width: auto;
+        float: none;
+        margin-left: 50px;
+        margin-right: 0;
     }
 
     .timeline-dot {
-        left: 20px; /* 將圓點放到垂直線上 */
+        left: 20px;
         transform: translateX(-50%);
     }
 
-    /* 【核心修正】統一處理手機版的箭頭樣式 */
-    .timeline-item .timeline-content::after {
-        left: -15px; /* 所有箭頭都從左邊出來 */
-        right: auto; /* 清除電腦版的 right 定位，避免衝突 */
+    /* 【核心修正】
+       使用更具體的選擇器，並為奇數和偶數項統一套用手機版專屬樣式，
+       這樣可以確保完全覆蓋電腦版的規則。
+    */
+    .timeline-item:nth-child(odd) .timeline-content::after,
+    .timeline-item:nth-child(even) .timeline-content::after {
+        /* 1. 統一將箭頭定位在左邊，並清除右邊的定位 */
+        left: -10px; /* 修正重疊問題，讓箭頭視覺上剛好在邊框外 */
+        right: auto;
         
-        /* 統一設定為指向左邊的箭頭 */
+        /* 2. 統一讓箭頭指向左邊 (透過為右邊框上色實現) */
         border-color: transparent var(--border-color) transparent transparent;
-        transition: border-right-color 0.3s ease; /* 過渡效果也只針對右邊框 */
+        
+        /* 3. 為了安全，明確清除電腦版奇數項目的左邊框顏色 */
+        border-left-color: transparent;
+
+        transition: border-right-color 0.3s ease;
     }
     
     /* 統一處理手機版懸浮時的箭頭樣式 */
-    .timeline-item .timeline-content:hover::after {
+    .timeline-item:nth-child(odd) .timeline-content:hover::after,
+    .timeline-item:nth-child(even) .timeline-content:hover::after {
         border-right-color: var(--primary-blue);
     }
 }
