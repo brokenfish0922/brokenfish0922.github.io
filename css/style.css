@@ -1773,8 +1773,8 @@ footer {
     margin: 2rem 0;
     width: 50%;
     padding: 10px 40px;
-    opacity: 0; /* 預設透明，用於滾動動畫 */
-    transform: translateY(30px); /* 預設下移，用於滾動動畫 */
+    opacity: 0;
+    transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
@@ -1800,7 +1800,18 @@ footer {
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
     position: relative;
+    /* --- Fix #3 & #4: 增加 transition 和初始邊框 --- */
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
+/* --- Fix #3 & #4: 卡片懸浮效果 --- */
+.timeline-content:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-blue); /* 懸浮時邊框變色 */
+}
+
 
 /* 內容區塊的箭頭 */
 .timeline-item:nth-child(odd) .timeline-content::after {
@@ -1811,7 +1822,14 @@ footer {
     border-width: 10px;
     border-style: solid;
     border-color: transparent transparent transparent var(--white);
+    /* 讓箭頭也有邊框，看起來更連續 */
+    border-left-color: var(--border-color);
+    transition: border-color 0.3s ease;
 }
+.timeline-item:nth-child(odd) .timeline-content:hover::after {
+    border-left-color: var(--primary-blue);
+}
+
 
 .timeline-item:nth-child(even) .timeline-content::after {
     content: '';
@@ -1821,24 +1839,51 @@ footer {
     border-width: 10px;
     border-style: solid;
     border-color: transparent var(--white) transparent transparent;
+    /* 讓箭頭也有邊框，看起來更連續 */
+    border-right-color: var(--border-color);
+    transition: border-color 0.3s ease;
+}
+.timeline-item:nth-child(even) .timeline-content:hover::after {
+    border-right-color: var(--primary-blue);
 }
 
 
-/* 時間軸上的圓點 */
+/* --- Fix #1 & #2: 修正圓點定位與美化樣式 --- */
 .timeline-dot {
     position: absolute;
-    left: -48px;
     top: 20px;
-    width: 18px;
-    height: 18px;
-    background: var(--accent-coral);
-    border: 4px solid var(--primary-bg);
+    width: 20px; /* 外圈尺寸 */
+    height: 20px; /* 外圈尺寸 */
+    background: var(--primary-bg); /* 中間留白，與背景色相同 */
+    border: 3px solid var(--primary-blue); /* 外圈顏色 */
     border-radius: 50%;
     z-index: 10;
+    box-shadow: 0 0 0 4px var(--white); /* 增加一層白色，讓圓點更突出 */
 }
 
+/* 圓點的內核 */
+.timeline-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px; /* 內核尺寸 */
+    height: 8px; /* 內核尺寸 */
+    background-color: var(--accent-coral); /* 內核顏色 */
+    border-radius: 50%;
+}
+
+/* 修正左側項目的圓點定位 */
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -10px; /* 從右邊定位 */
+    transform: translateX(50%);
+}
+
+/* 修正右側項目的圓點定位 */
 .timeline-item:nth-child(even) .timeline-dot {
-    left: -49px; /* 修正偶數項目的圓點位置 */
+    left: -10px; /* 從左邊定位 */
+    transform: translateX(-50%);
 }
 
 .day-number {
@@ -1864,25 +1909,33 @@ footer {
 /* 時間軸響應式設計 */
 @media (max-width: 768px) {
     .timeline::before {
-        left: 30px; /* 將垂直線移到左邊 */
+        left: 20px; /* 將垂直線移到左邊 */
     }
 
     .timeline-item,
     .timeline-item:nth-child(even) {
         width: 100%;
         left: 0;
-        padding-left: 70px; /* 增加左邊距，為圓點和箭頭留出空間 */
+        padding-left: 50px; /* 增加左邊距 */
         padding-right: 15px;
     }
     
+    /* 修正手機版圓點定位 */
     .timeline-dot,
     .timeline-item:nth-child(even) .timeline-dot {
-        left: 22px; /* 將圓點放到垂直線上 */
+        left: 20px; 
+        transform: translateX(-50%); /* 水平置中於線上 */
     }
 
     .timeline-item:nth-child(odd) .timeline-content::after,
     .timeline-item:nth-child(even) .timeline-content::after {
-        left: -15px; /* 將箭頭統一指向左邊 */
+        left: -15px; 
         border-color: transparent var(--white) transparent transparent;
+        border-right-color: var(--border-color); /* 手機版箭頭邊框 */
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content:hover::after,
+    .timeline-item:nth-child(even) .timeline-content:hover::after {
+         border-right-color: var(--primary-blue); /* 手機版懸浮箭頭邊框 */
     }
 }
