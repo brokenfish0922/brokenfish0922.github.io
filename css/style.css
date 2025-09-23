@@ -1768,11 +1768,10 @@ footer {
     border-radius: 3px;
 }
 
+/* timeline-item 現在是全寬容器，我們不去動它 */
 .timeline-item {
     position: relative;
-    margin: 2rem 0;
-    width: 50%;
-    padding: 10px 40px;
+    margin: 2.5rem 0; /* 加大垂直間距 */
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -1783,37 +1782,41 @@ footer {
     transform: translateY(0);
 }
 
-/* 左側項目 */
-.timeline-item:nth-child(odd) {
-    left: 0;
-}
-
-/* 右側項目 */
-.timeline-item:nth-child(even) {
-    left: 50%;
-}
-
-/* 內容區塊 */
+/* 內容區塊 (卡片) */
 .timeline-content {
+    position: relative;
+    width: calc(50% - 40px); /* 卡片寬度為一半再減去間距 */
     background: var(--white);
     padding: 25px;
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
-    position: relative;
-    /* --- Fix #3 & #4: 增加 transition 和初始邊框 --- */
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* --- Fix #3 & #4: 卡片懸浮效果 --- */
 .timeline-content:hover {
     transform: translateY(-6px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-    border-color: var(--primary-blue); /* 懸浮時邊框變色 */
+    border-color: var(--primary-blue);
+}
+
+/* 【核心修正】使用 margin 將卡片推到左右兩側 */
+.timeline-item:nth-child(odd) .timeline-content {
+    float: left; /* 左浮動 */
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    float: right; /* 右浮動 */
+}
+/* 清除浮動，避免父元素高度塌陷 */
+.timeline-item::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 
-/* 內容區塊的箭頭 */
+/* --- 卡片箭頭樣式 (維持不變) --- */
 .timeline-item:nth-child(odd) .timeline-content::after {
     content: '';
     position: absolute;
@@ -1821,15 +1824,12 @@ footer {
     right: -15px;
     border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent transparent var(--white);
-    /* 讓箭頭也有邊框，看起來更連續 */
     border-left-color: var(--border-color);
     transition: border-color 0.3s ease;
 }
 .timeline-item:nth-child(odd) .timeline-content:hover::after {
     border-left-color: var(--primary-blue);
 }
-
 
 .timeline-item:nth-child(even) .timeline-content::after {
     content: '';
@@ -1838,8 +1838,6 @@ footer {
     left: -15px;
     border-width: 10px;
     border-style: solid;
-    border-color: transparent var(--white) transparent transparent;
-    /* 讓箭頭也有邊框，看起來更連續 */
     border-right-color: var(--border-color);
     transition: border-color 0.3s ease;
 }
@@ -1847,43 +1845,31 @@ footer {
     border-right-color: var(--primary-blue);
 }
 
-
-/* --- Fix #1 & #2: 修正圓點定位與美化樣式 --- */
+/* --- 【核心修正】圓點的定位 --- */
 .timeline-dot {
     position: absolute;
     top: 20px;
-    width: 20px; /* 外圈尺寸 */
-    height: 20px; /* 外圈尺寸 */
-    background: var(--primary-bg); /* 中間留白，與背景色相同 */
-    border: 3px solid var(--primary-blue); /* 外圈顏色 */
+    left: 50%; /* 定位在父層(全寬)的中間 */
+    transform: translateX(-50%); /* 透過 transform 讓自己精準置中 */
+    width: 20px;
+    height: 20px;
+    background: var(--primary-bg);
+    border: 3px solid var(--primary-blue);
     border-radius: 50%;
     z-index: 10;
-    box-shadow: 0 0 0 4px var(--white); /* 增加一層白色，讓圓點更突出 */
+    box-shadow: 0 0 0 4px var(--white);
 }
 
-/* 圓點的內核 */
 .timeline-dot::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 8px; /* 內核尺寸 */
-    height: 8px; /* 內核尺寸 */
-    background-color: var(--accent-coral); /* 內核顏色 */
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-coral);
     border-radius: 50%;
-}
-
-/* 修正左側項目的圓點定位 */
-.timeline-item:nth-child(odd) .timeline-dot {
-    right: -10px; /* 從右邊定位 */
-    transform: translateX(50%);
-}
-
-/* 修正右側項目的圓點定位 */
-.timeline-item:nth-child(even) .timeline-dot {
-    left: -10px; /* 從左邊定位 */
-    transform: translateX(-50%);
 }
 
 .day-number {
@@ -1906,39 +1892,32 @@ footer {
     line-height: 1.7;
 }
 
-/* 時間軸響應式設計 */
+/* --- 手機版響應式 (維持不變) --- */
 @media (max-width: 768px) {
     .timeline::before {
-        left: 20px; /* 將垂直線移到左邊 */
-    }
-
-    .timeline-item,
-    .timeline-item:nth-child(even) {
-        width: 100%;
-        left: 0;
-        padding-left: 50px; /* 增加左邊距 */
-        padding-right: 15px;
+        left: 20px;
     }
     
-    /* 修正手機版圓點定位 */
-    .timeline-dot,
-    .timeline-item:nth-child(odd) .timeline-dot,
-    .timeline-item:nth-child(even) .timeline-dot {
-        left: 20px; 
-        transform: translateX(-50%); /* 水平置中於線上 */
+    .timeline-content {
+        width: auto; /* 寬度自動 */
+        float: none; /* 清除浮動 */
+        margin-left: 50px; /* 卡片統一推到右邊 */
     }
 
-
+    .timeline-dot {
+        left: 20px;
+        transform: translateX(-50%);
+    }
 
     .timeline-item:nth-child(odd) .timeline-content::after,
     .timeline-item:nth-child(even) .timeline-content::after {
-        left: -15px; 
-        border-color: transparent var(--white) transparent transparent;
-        border-right-color: var(--border-color); /* 手機版箭頭邊框 */
+        left: -15px;
+        border-right-color: var(--border-color);
+        border-left-color: transparent;
     }
-    
+
     .timeline-item:nth-child(odd) .timeline-content:hover::after,
     .timeline-item:nth-child(even) .timeline-content:hover::after {
-         border-right-color: var(--primary-blue); /* 手機版懸浮箭頭邊框 */
+        border-right-color: var(--primary-blue);
     }
 }
