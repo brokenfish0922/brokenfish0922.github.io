@@ -1922,10 +1922,13 @@ footer {
     
     /* 修正手機版圓點定位 */
     .timeline-dot,
+    .timeline-item:nth-child(odd) .timeline-dot,
     .timeline-item:nth-child(even) .timeline-dot {
         left: 20px; 
         transform: translateX(-50%); /* 水平置中於線上 */
     }
+
+
 
     .timeline-item:nth-child(odd) .timeline-content::after,
     .timeline-item:nth-child(even) .timeline-content::after {
