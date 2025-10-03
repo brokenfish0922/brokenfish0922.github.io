@@ -1494,8 +1494,10 @@ footer {
 .carousel-images {
     position: relative;
     width: 100%;
-    height: 500px;
+    min-height: 300px;
+    max-height: 600px;
     overflow: hidden;
+    transition: height 0.3s ease;
 }
 
 /* 單張照片樣式 */
@@ -1516,8 +1518,9 @@ footer {
 .carousel-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+    background: #000;
 }
 
 /* 左右切換按鈕 */
@@ -1943,4 +1946,209 @@ footer {
         border-right-color: var(--primary-blue);
         border-left-color: transparent; /* 強制清除桌面版樣式 */
     }
+    
+    .carousel-images {
+        min-height: 200px;
+        max-height: 500px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .carousel-btn.prev {
+        left: 10px;
+    }
+    
+    .carousel-btn.next {
+        right: 10px;
+    }
+}
+
+.itinerary-summary {
+    background-color: var(--primary-bg); /* 使用淡淡的 AliceBlue 背景 */
+    border-radius: var(--border-radius);
+    padding: 25px 30px;
+    margin-bottom: 3.5em; /* 與下方第一個景點區塊拉開距離 */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-left: 5px solid var(--darker-blue); /* 左側用深一點的藍色做強調 */
+}
+
+.itinerary-summary i {
+    font-size: 2.5em;
+    color: var(--darker-blue);
+}
+
+.itinerary-summary p {
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin-bottom: 0; /* 移除段落預設的下邊距 */
+}
+
+/* 獨立行程區塊 (景點、餐廳通用) */
+.itinerary-block {
+    background-color: #fdfdfd; /* 比白色稍微柔和一點的背景 */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-bottom: 2.5em; /* 每個區塊之間的間距 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.3s ease;
+}
+
+.itinerary-block:hover {
+    box-shadow: var(--card-shadow); /* 滑鼠移上去時顯示更明顯的陰影 */
+}
+
+/* 行程區塊內的 h3 標題 */
+.itinerary-block h3 {
+    font-size: 1.8em;
+    color: var(--darker-blue); /* 使用 SkyBlue 作為標題顏色 */
+    margin-top: 0;
+    margin-bottom: 0.3em;
+    scroll-margin-top: 80px; /* 讓目錄跳轉時，標題不會被頂部導覽列擋住 */
+}
+
+/* 引言文字 */
+.itinerary-intro {
+    font-size: 1.1em;
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 1.5em;
+    border-left: 3px solid var(--primary-blue);
+    padding-left: 15px;
+}
+
+/* 景點照片 */
+.itinerary-image {
+    margin: 0 0 1.5em 0; /* 移除 figure 預設的左右 margin */
+}
+
+.itinerary-image img {
+    border-radius: var(--border-radius);
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* 景點簡介 */
+.itinerary-description {
+    line-height: 1.8;
+    margin-bottom: 2em; /* 與下方按鈕拉開距離 */
+}
+
+/* "詳細介紹" 按鈕 */
+.itinerary-block .btn {
+    background-color: var(--accent-coral);
+    color: var(--white);
+}
+
+.itinerary-block .btn:hover {
+    background-color: #E57373;
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* 讓文章主內容區的 padding 適中 */
+.single-post-content .entry-content {
+    padding-top: 20px;
+}
+
+/* 調整主標題 H1 的樣式 */
+.single-post-content .post-header h1 {
+    margin-bottom: 0.5em; /* 縮小與下方內容的距離 */
+}
+
+/* --- 影片播放器 S --- */
+.video-container {
+    position: relative;
+    max-width: 800px;
+    margin: 2.5em auto;
+    background-color: #000;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    /* --- 新增 --- */
+    /* 使用 Flexbox 確保當影片因高度限制而縮小時，仍能在容器中水平和垂直置中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 影片播放器本身 */
+.video-container .custom-video-player {
+    width: 100%;
+    height: auto; 
+    display: block;
+    border-radius: var(--border-radius);
+    /* --- 新增 --- */
+    /* 關鍵！設定最大高度為可見視窗高度的 85% */
+    /* 這可以防止影片（特別是垂直影片）在桌機螢幕上變得過高 */
+    max-height: 85vh; 
+    object-fit: contain; /* 確保影片內容完整顯示，不被裁切 */
+}
+
+/* 自訂的播放/暫停按鈕 */
+.video-container .play-pause-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--white);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* 圖示大小 */
+    transition: all 0.3s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+.video-container .play-pause-btn:hover {
+    background-color: rgba(255, 127, 80, 0.8); /* 使用主題強調色 */
+    border-color: var(--accent-coral);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* 播放按鈕內的圖示，稍微往右移一點讓三角形置中 */
+.video-container .play-pause-btn .fa-play {
+    margin-left: 5px; 
+}
+
+/* 當影片播放時，隱藏按鈕 */
+.video-container.is-playing .play-pause-btn {
+    opacity: 0;
+    visibility: hidden;
+}
+/* --- 影片播放器 E --- */
+
+/* --- 【新增】單張文章照片高度自適應調整 --- */
+
+.entry-content > figure img {
+    /* 關鍵：設定圖片的最大高度為使用者瀏覽器可視範圍的 85%。
+       您可以依喜好調整這個數值，例如 80vh 或 90vh。*/
+    max-height: 85vh;
+
+    /* 當圖片因高度受限時，確保圖片內容維持原始比例完整顯示，而不是被拉伸或裁切。*/
+    object-fit: contain;
+    
+    /* 讓圖片在高度受限時，能自動在 figure 容器中水平居中。*/
+    margin-left: auto;
+    margin-right: auto;
+
+    /* (可選) 增加圓角和陰影，提升質感，與輪播照片風格更統一 */
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
 }

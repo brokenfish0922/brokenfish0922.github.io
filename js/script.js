@@ -151,6 +151,83 @@ const navigationData = {
         posts: [
            { title: '零食大集合', url: 'okasi.html' }
         ]
+    },
+    '2025all': {
+        name: '2025四國行程總覽',
+        listUrl: '../2025.html',
+        posts: [
+           { title: '2005四國之旅-第一天行程總覽', url: 'day01.html' },
+           { title: '2005四國之旅-第二天行程總覽', url: 'day02.html' },
+           { title: '2005四國之旅-第三天行程總覽', url: 'day03.html' },
+           { title: '2005四國之旅-第四天行程總覽', url: 'day04.html' },
+           { title: '2005四國之旅-第五天行程總覽', url: 'day05.html' },
+           { title: '2005四國之旅-第六天行程總覽', url: 'day06.html' },
+           { title: '2005四國之旅-第七天行程總覽', url: 'day07.html' },
+           { title: '2005四國之旅-第八天行程總覽', url: 'day08.html' },
+           { title: '2005四國之旅-第九天行程總覽', url: 'day09.html' },
+           { title: '2005四國之旅-第十天行程總覽', url: 'day70.html' }
+        ]
+    },
+    'category-jinja': {
+        name: '神社與寺廟',
+        listUrl: 'category-jinja.html',
+        posts: [
+           { title: '西の滝 龍水寺', url: 'ryusuitemple.html' },
+           { title: '金刀比羅宮', url: 'kotohiragu.html' },
+           { title: '屋島寺', url: 'yashimajitemple.html' },
+           { title: '屋島神社', url: 'yashimajinja.html' },
+           { title: '伊佐爾波神社', url: 'isaniwajinja.html' }
+        ]
+    },
+    'oldstreets': {
+        name: '古蹟與老街',
+        listUrl: 'oldstreets.html',
+        posts: [
+           { title: '佛生山', url: 'busshozan.html' },
+           { title: '內子町', url: 'uchiko.html' },
+           { title: '三津濱老街', url: 'mitsuhama.html' }
+        ]
+    },
+    'naturalscenery': {
+        name: '自然風景與觀光景點',
+        listUrl: 'naturalscenery.html',
+        posts: [
+           { title: '錢形砂繪', url: 'heneitongbao.html' },
+           { title: '寒霞溪', url: 'kankakei.html' },
+           { title: '天使之路', url: 'angelroad.html' },
+           { title: '小豆島橄欖公園', url: 'shodoshimaolivepark.html' },
+           { title: '屋島', url: 'yashima.html' }
+        ]
+    },
+    'shoppingstreet': {
+        name: '商店街與購物中心',
+        listUrl: 'shoppingstreet.html',
+        posts: [
+           { title: '道後溫泉商店街', url: 'dogohaikarastreet.html' },
+           { title: '高松中央商店街', url: 'takamatsushopping.html' }
+        ]
+    },
+    'exhibitionvenues': {
+        name: '展覽場館',
+        listUrl: 'exhibitionvenues.html',
+        posts: [
+           { title: 'Jump 快閃店', url: 'jumpstore.html' },
+           { title: '毛巾美術館', url: 'towelmuseum.html' },
+           { title: '愛媛縣綜合科學博物館', url: 'ehimescience.html' },
+           { title: '四國水族館', url: 'shikokuaquarium.html' }
+        ]
+    },
+    '2025other': {
+        name: '其他',
+        listUrl: '2025other.html',
+        posts: [
+           { title: '小豆島渡輪', url: 'shodoshimaferry2.html' },
+           { title: '讚岐高松祭(含浴衣)', url: 'sanukitakamatsumatsuri.html' },
+           { title: '平成租車', url: 'heiseicar.html' },
+           { title: '戰利品-動漫周邊', url: 'animegoods.html' },
+           { title: '戰利品-美食伴手禮', url: 'omiyage.html' },
+           { title: '戰利品-藥妝&其他', url: 'drugother.html' }
+        ]
     }
 };
 
@@ -412,133 +489,293 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 10. 照片輪播
-    const carousel = document.getElementById('aquarium-carousel');
-    if (carousel) {
+    // 為每個輪播組件初始化
+    const carousels = document.querySelectorAll('.photo-carousel');
+    
+    carousels.forEach((carousel) => {
+        initCarousel(carousel);
+    });
+    
+    // 初始化單個輪播
+    function initCarousel(carouselElement) {
         let currentPhotoIndex = 0;
-        const images = carousel.querySelectorAll('.carousel-image');
+        const images = carouselElement.querySelectorAll('.carousel-image');
         const totalPhotos = images.length;
         
-        if (totalPhotos > 0) {
-            // --- 輪播功能完整邏輯開始 ---
-
-            // 手機版照片資訊顯示切換
-            function togglePhotoInfo() {
-                const currentPhotoInfo = images[currentPhotoIndex].querySelector('.photo-info');
+        // 更新總照片數
+        const totalPhotosElement = carouselElement.querySelector('.total-photos');
+        if (totalPhotosElement) {
+            totalPhotosElement.textContent = totalPhotos;
+        }
+        
+        // 手機版照片資訊顯示切換
+        function togglePhotoInfo() {
+            const currentPhotoInfo = images[currentPhotoIndex].querySelector('.photo-info');
+            if (currentPhotoInfo) {
                 currentPhotoInfo.classList.toggle('show');
             }
-            
-            // 切換照片時隱藏資訊（手機版）
-            function hidePhotoInfo() {
-                const allPhotoInfos = document.querySelectorAll('.photo-info');
-                allPhotoInfos.forEach(info => info.classList.remove('show'));
-            }
-            
-            // 更新照片顯示
-            function updatePhotoDisplay() {
-                images.forEach(img => img.classList.remove('active'));
-                images[currentPhotoIndex].classList.add('active');
-                
-                const thumbnails = document.querySelectorAll('.thumbnail');
-                if (thumbnails.length === totalPhotos) {
-                    thumbnails.forEach(thumb => thumb.classList.remove('active'));
-                    thumbnails[currentPhotoIndex].classList.add('active');
-                }
-                
-                const indicators = document.querySelectorAll('.indicator');
-                if (indicators.length === totalPhotos) {
-                    indicators.forEach(indicator => indicator.classList.remove('active'));
-                    indicators[currentPhotoIndex].classList.add('active');
-                }
-                
-                const currentPhotoCounter = document.getElementById('current-photo');
-                if (currentPhotoCounter) {
-                    currentPhotoCounter.textContent = currentPhotoIndex + 1;
-                }
-                
-                hidePhotoInfo();
-            }
-            
-            // 切換照片
-            function changePhoto(direction) {
-                currentPhotoIndex += direction;
-                if (currentPhotoIndex >= totalPhotos) {
-                    currentPhotoIndex = 0;
-                } else if (currentPhotoIndex < 0) {
-                    currentPhotoIndex = totalPhotos - 1;
-                }
-                updatePhotoDisplay();
-            }
-            
-            // 直接跳轉到指定照片
-            function goToPhoto(index) {
-                currentPhotoIndex = index;
-                updatePhotoDisplay();
-            }
-            
-            let autoPlayInterval;
-            
-            function startAutoPlay() {
-                stopAutoPlay(); // 先清除既有的，避免重複
-                autoPlayInterval = setInterval(() => {
-                    changePhoto(1);
-                }, 4000);
-            }
-            
-            function stopAutoPlay() {
-                clearInterval(autoPlayInterval);
-            }
-            
-            // 事件監聽器設定
-            function setupEventListeners() {
-                document.querySelector('.carousel-btn.prev')?.addEventListener('click', () => changePhoto(-1));
-                document.querySelector('.carousel-btn.next')?.addEventListener('click', () => changePhoto(1));
-                
-                document.querySelector('.info-toggle')?.addEventListener('click', togglePhotoInfo);
-                
-                document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-                    thumb.addEventListener('click', () => goToPhoto(index));
-                });
-                
-                document.querySelectorAll('.indicator').forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => goToPhoto(index));
-                });
-                
-                carousel.addEventListener('mouseenter', stopAutoPlay);
-                carousel.addEventListener('mouseleave', startAutoPlay);
-                
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') changePhoto(-1);
-                    if (e.key === 'ArrowRight') changePhoto(1);
-                });
-                
-                let touchStartX = 0;
-                carousel.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                }, { passive: true });
-                
-                carousel.addEventListener('touchend', (e) => {
-                    let touchEndX = e.changedTouches[0].screenX;
-                    const swipeThreshold = 50;
-                    const diff = touchStartX - touchEndX;
-                    if (Math.abs(diff) > swipeThreshold) {
-                        changePhoto(diff > 0 ? 1 : -1);
-                    }
-                }, { passive: true });
-            }
-            
-            // 初始化
-            function init() {
-                const totalPhotosCounter = document.getElementById('total-photos');
-                if(totalPhotosCounter) {
-                    totalPhotosCounter.textContent = totalPhotos;
-                }
-                setupEventListeners();
-                startAutoPlay();
-            }
-            
-            init();
-            
-            // --- 輪播功能完整邏輯結束 ---
         }
+        
+        // 切換照片時隱藏資訊（手機版）
+        function hidePhotoInfo() {
+            const allPhotoInfos = carouselElement.querySelectorAll('.photo-info');
+            allPhotoInfos.forEach(info => info.classList.remove('show'));
+        }
+        
+        // 更新照片顯示
+        function updatePhotoDisplay() {
+            // 隱藏所有照片
+            images.forEach(img => img.classList.remove('active'));
+            
+            // 顯示當前照片
+            images[currentPhotoIndex].classList.add('active');
+            
+            // 動態調整容器高度以適應照片比例
+            adjustCarouselHeight();
+            
+            // 更新縮略圖
+            const thumbnails = carouselElement.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            if (thumbnails[currentPhotoIndex]) {
+                thumbnails[currentPhotoIndex].classList.add('active');
+            }
+            
+            // 更新指示器
+            const indicators = carouselElement.querySelectorAll('.indicator');
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            if (indicators[currentPhotoIndex]) {
+                indicators[currentPhotoIndex].classList.add('active');
+            }
+            
+            // 更新計數器
+            const currentPhotoElement = carouselElement.querySelector('.current-photo');
+            if (currentPhotoElement) {
+                currentPhotoElement.textContent = currentPhotoIndex + 1;
+            }
+            
+            // 切換照片時隱藏照片資訊（手機版）
+            hidePhotoInfo();
+        }
+        
+        // 動態調整輪播高度以適應照片比例
+        function adjustCarouselHeight() {
+            const currentImage = images[currentPhotoIndex].querySelector('img');
+            const carouselImagesContainer = carouselElement.querySelector('.carousel-images');
+            
+            if (currentImage && carouselImagesContainer) {
+                function setHeight() {
+                    // 確保圖片已載入且有尺寸資訊
+                    if (currentImage.naturalWidth === 0 || currentImage.naturalHeight === 0) {
+                        return;
+                    }
+                    
+                    const containerWidth = carouselImagesContainer.offsetWidth;
+                    const imageAspectRatio = currentImage.naturalWidth / currentImage.naturalHeight;
+                    let newHeight = containerWidth / imageAspectRatio;
+                    
+                    // 限制高度在最小值和最大值之間
+                    const minHeight = window.innerWidth <= 768 ? 200 : 300;
+                    const maxHeight = window.innerWidth <= 768 ? 500 : 600;
+                    
+                    newHeight = Math.max(minHeight, Math.min(newHeight, maxHeight));
+                    carouselImagesContainer.style.height = newHeight + 'px';
+                }
+                
+                // 如果圖片已經載入完成
+                if (currentImage.complete && currentImage.naturalWidth > 0) {
+                    setHeight();
+                } else {
+                    // 等待圖片載入完成
+                    currentImage.addEventListener('load', setHeight, { once: true });
+                }
+            }
+        }
+        
+        // 切換照片
+        function changePhoto(direction) {
+            currentPhotoIndex += direction;
+            
+            // 循環處理
+            if (currentPhotoIndex >= totalPhotos) {
+                currentPhotoIndex = 0;
+            } else if (currentPhotoIndex < 0) {
+                currentPhotoIndex = totalPhotos - 1;
+            }
+            
+            updatePhotoDisplay();
+        }
+        
+        // 直接跳轉到指定照片
+        function goToPhoto(index) {
+            currentPhotoIndex = index;
+            updatePhotoDisplay();
+        }
+        
+        // 自動播放功能（已停用）
+        // let autoPlayInterval;
+        // 
+        // function startAutoPlay() {
+        //     autoPlayInterval = setInterval(() => {
+        //         changePhoto(1);
+        //     }, 4000); // 每4秒切換一次
+        // }
+        // 
+        // function stopAutoPlay() {
+        //     clearInterval(autoPlayInterval);
+        // }
+        
+        // 事件監聽器設定
+        function setupEventListeners() {
+            // 左右切換按鈕
+            const prevBtn = carouselElement.querySelector('.carousel-btn.prev');
+            const nextBtn = carouselElement.querySelector('.carousel-btn.next');
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => changePhoto(-1));
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => changePhoto(1));
+            }
+            
+            // 手機版資訊按鈕
+            const infoToggle = carouselElement.querySelector('.info-toggle');
+            if (infoToggle) {
+                infoToggle.addEventListener('click', togglePhotoInfo);
+            }
+            
+            // 縮略圖點擊
+            const thumbnails = carouselElement.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumb, index) => {
+                thumb.addEventListener('click', () => goToPhoto(index));
+            });
+            
+            // 指示器點擊
+            const indicators = carouselElement.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => goToPhoto(index));
+            });
+            
+            // 滑鼠懸停控制自動播放（已停用）
+            // carouselElement.addEventListener('mouseenter', stopAutoPlay);
+            // carouselElement.addEventListener('mouseleave', startAutoPlay);
+            
+            // 觸摸手勢支援（移動設備）
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            carouselElement.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            carouselElement.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        changePhoto(1); // 向左滑動，下一張
+                    } else {
+                        changePhoto(-1); // 向右滑動，上一張
+                    }
+                }
+            }
+        }
+        
+        // 啟動輪播功能
+        setupEventListeners();
+        
+        // 確保所有第一張照片都載入後才調整高度
+        const firstImages = Array.from(carousels).map(c => c.querySelector('.carousel-image.active img'));
+        
+        Promise.all(
+            firstImages.map(img => {
+                if (img && img.complete && img.naturalWidth > 0) {
+                    return Promise.resolve();
+                } else if (img) {
+                    return new Promise(resolve => {
+                        img.addEventListener('load', resolve, { once: true });
+                    });
+                }
+                return Promise.resolve();
+            })
+        ).then(() => {
+            // 所有第一張圖片都載入完成後，調整高度
+            adjustCarouselHeight();
+            // 自動播放已停用
+            // startAutoPlay();
+        });
+        
+        // 視窗大小改變時重新調整高度
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                adjustCarouselHeight();
+            }, 100);
+        });
     }
+    
+    // 全域鍵盤控制（可選）
+    // 如果你希望方向鍵只控制第一個輪播，可以加入這段
+    /*
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            const firstCarousel = carousels[0];
+            if (firstCarousel) {
+                const prevBtn = firstCarousel.querySelector('.carousel-btn.prev');
+                const nextBtn = firstCarousel.querySelector('.carousel-btn.next');
+                
+                if (e.key === 'ArrowLeft' && prevBtn) {
+                    prevBtn.click();
+                } else if (e.key === 'ArrowRight' && nextBtn) {
+                    nextBtn.click();
+                }
+            }
+        }
+    });
+    */
+
+    // 11. 影片播放器控制 S
+    const videoContainer = document.querySelector('.video-container');
+    if (videoContainer) {
+        const video = videoContainer.querySelector('.custom-video-player');
+        const playPauseBtn = videoContainer.querySelector('.play-pause-btn');
+        const playIcon = playPauseBtn.querySelector('i');
+
+        // 點擊按鈕時，播放或暫停影片
+        playPauseBtn.addEventListener('click', () => {
+            if (video.paused || video.ended) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+
+        // 當影片開始播放時
+        video.addEventListener('play', () => {
+            videoContainer.classList.add('is-playing');
+            playIcon.classList.remove('fa-play');
+            playIcon.classList.add('fa-pause');
+        });
+
+        // 當影片暫停時
+        video.addEventListener('pause', () => {
+            videoContainer.classList.remove('is-playing');
+            playIcon.classList.remove('fa-pause');
+            playIcon.classList.add('fa-play');
+        });
+
+        // 當使用者使用原生控制器操作時，也能同步按鈕狀態
+        video.addEventListener('playing', () => {
+             videoContainer.classList.add('is-playing');
+        });
+    }
+    // 影片播放器控制 E
+
+
 });
