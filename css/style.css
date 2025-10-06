@@ -2152,3 +2152,20 @@ footer {
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
 }
+
+.itinerary-block > figure img {
+    /* 關鍵：設定圖片的最大高度為使用者瀏覽器可視範圍的 85%。
+       您可以依喜好調整這個數值，例如 80vh 或 90vh。*/
+    max-height: 85vh;
+
+    /* 當圖片因高度受限時，確保圖片內容維持原始比例完整顯示，而不是被拉伸或裁切。*/
+    object-fit: contain;
+    
+    /* 讓圖片在高度受限時，能自動在 figure 容器中水平居中。*/
+    margin-left: auto;
+    margin-right: auto;
+
+    /* (可選) 增加圓角和陰影，提升質感，與輪播照片風格更統一 */
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
