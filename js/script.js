@@ -223,10 +223,7 @@ const navigationData = {
         posts: [
            { title: '小豆島渡輪', url: 'shodoshimaferry2.html' },
            { title: '讚岐高松祭(含浴衣)', url: 'sanukitakamatsumatsuri.html' },
-           { title: '平成租車', url: 'heiseicar.html' },
-           { title: '戰利品-動漫周邊', url: 'animegoods.html' },
-           { title: '戰利品-美食伴手禮', url: 'omiyage.html' },
-           { title: '戰利品-藥妝&其他', url: 'drugother.html' }
+           { title: '平成租車', url: 'heiseicar.html' }
         ]
     }
 };
