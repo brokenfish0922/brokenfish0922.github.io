@@ -165,7 +165,7 @@ const navigationData = {
            { title: '2005四國之旅-第七天行程總覽', url: 'day07.html' },
            { title: '2005四國之旅-第八天行程總覽', url: 'day08.html' },
            { title: '2005四國之旅-第九天行程總覽', url: 'day09.html' },
-           { title: '2005四國之旅-第十天行程總覽', url: 'day70.html' }
+           { title: '2005四國之旅-第十天行程總覽', url: 'day10.html' }
         ]
     },
     'category-jinja': {
