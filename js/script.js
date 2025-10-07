@@ -4,6 +4,12 @@ const API_URL = "https://script.google.com/macros/s/AKfycbz3m96hBGXd17144khL3jse
 const PAGE_ID = window.location.pathname;
 
 // --- 全域函式定義 ---
+// 【新增】簡易的 HTML 淨化函式，防止 XSS 攻擊
+function sanitizeHTML(str) {
+  const temp = document.createElement('div');
+  temp.textContent = str;
+  return temp.innerHTML;
+}
 
 async function loadComments() {
   const list = document.getElementById("commentList");
@@ -16,6 +22,9 @@ async function loadComments() {
     comments.reverse().forEach(c => {
       let card = document.createElement("div");
       card.className = "comment-card";
+            // 【修改】在插入留言前，先進行淨化
+      const safeName = sanitizeHTML(c.name);
+      const safeMessage = sanitizeHTML(c.message).replace(/\n/g, '<br>'); // 將換行符轉為 <br>
       card.innerHTML = `
         <div class="comment-header">
           ${c.name}
@@ -292,7 +301,10 @@ function generatePostNavigation() {
 // --- 唯一的 DOMContentLoaded 監聽器 ---
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    // 【新增】鎖定右鍵功能
+    // 說明：這只能防君子，不能防有心人。專業人士仍可透過開發者工具取得資源。
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    
     // 1. 留言板功能初始化
     const commentForm = document.getElementById("commentForm");
     if (commentForm) {

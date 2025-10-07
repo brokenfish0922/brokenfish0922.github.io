@@ -1,4 +1,14 @@
 /* --- Globals & Variables --- */
+
+/* 較佳的替代方案：只針對文章內容的圖片 */
+article img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
 :root {
     --primary-bg: #F0F8FF; /* AliceBlue - 背景/大面積 */
     --primary-blue: #ADD8E6; /* LightBlue - 主視覺 */
