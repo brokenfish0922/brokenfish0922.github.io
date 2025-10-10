@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>破魚的創作小天地</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 沿用您原本的 CSS 檔案 -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* --- 聯絡我頁面專屬樣式 --- */
+        .contact-me-container {
+            background-color: var(--white);
+            padding: 50px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            text-align: center; /* 讓內部所有元素置中 */
+        }
+
+        .contact-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            /* 【修改】使用 margin auto 來達成水平置中 */
+            margin: 0 auto 25px;
+            border: 6px solid var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-title {
+            font-family: var(--font-headings);
+            font-size: 2.5em; /* 使用大字體 */
+            color: #3A5F7D;   /* 沿用 H1 標題顏色 */
+            margin-bottom: 20px;
+        }
+
+        .email-block {
+            background-color: var(--primary-bg); /* 使用背景淡藍色 */
+            border: 1px solid var(--primary-blue); /* 使用主視覺藍色邊框 */
+            border-radius: var(--border-radius);
+            padding: 20px 35px;
+            margin-top: 10px;
+            display: inline-block; /* 讓區塊寬度隨內容變化，但仍可設定內距 */
+            transition: all 0.3s ease;
+        }
+
+        .email-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+
+        .email-link {
+            font-family: var(--font-primary);
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--accent-coral); /* 沿用強調色 */
+            text-decoration: none;
+        }
+
+        .email-link i {
+            margin-right: 12px; /* 圖示與文字的間距 */
+        }
+
+        .email-link:hover {
+            color: #E57373; /* 滑鼠懸停時的顏色 */
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 768px) {
+            .contact-title {
+                font-size: 2em;
+            }
+            .contact-avatar {
+                width: 150px;
+                height: 150px;
+            }
+            .email-link {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="creation.html" class="logo">
+                <i class="fas fa-map-signs"></i> 破魚的創作小天地
+            </a>
+            <nav class="main-nav">
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul>
+                <li><a href="creation.html">首頁</a></li>
+
+                <li><a href="contact2.html" class="active">聯絡我</a></li>
+                </ul>
+            </nav>
+        
+    </header>
+
+    <main class="container section-padding">
+        <!-- 聯絡我頁面主要內容區塊 -->
+        <div class="contact-me-container">
+
+            <!-- 1. 請將 src="..." 替換成您的頭像圖片路徑 -->
+            <img src="images/阿爸Q版頭像（去背).png" alt="我的頭像" class="contact-avatar">
+
+            <!-- 2. 大字體標題 -->
+            <h2 class="contact-title">我的電子郵件</h2>
+
+            <!-- 3. 獨立的電子郵件區塊 -->
+            <div class="email-block">
+                <!-- 4. 請將 mailto: 和顯示的文字都換成您的 Email -->
+                <a href="mailto:brokenfish7@gmail.com" class="email-link">
+                    <i class="far fa-envelope"></i>
+                    brokenfish7@gmail.com
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 破魚的創作小天地. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/brokenfish7/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/brokenfish7?igsh=MTg4bDdlM21pcTNsbQ==" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="creation.html" aria-label="Youtube"><i class="fas fa-music"></i></a>
+                </div>
+            </div>
+            <button id="backToTopBtn" title="回到頂部"><i class="fas fa-arrow-up"></i></button>
+        </div>
+    </footer>
+
+    <!-- 您的 JavaScript 檔案 -->
+    <script src="js/script.js"></script>
+</body>
+</html>

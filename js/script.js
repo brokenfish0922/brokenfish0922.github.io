@@ -234,6 +234,54 @@ const navigationData = {
            { title: '讚岐高松祭(含浴衣)', url: 'sanukitakamatsumatsuri.html' },
            { title: '平成租車', url: 'heiseicar.html' }
         ]
+    },
+    'novel': {
+        name: '迴響於妳的寂寞',
+        listUrl: '../novel.html',
+        posts: [
+           { title: '第1章：失眠的夜', url: 'ch01.html' },
+           { title: '第2章：陌生的聲音', url: 'ch02.html' },
+           { title: '第3章：試探', url: 'ch03.html' },
+           { title: '第4章：第一場夢', url: 'ch04.html' },
+           { title: '第5章：陪伴的習慣', url: 'ch05.html' },
+           { title: '第6章：危險的夜路', url: 'ch06.html' },
+           { title: '第7章：心靈支柱', url: 'ch07.html' },
+           { title: '第8章：孩子般的學習', url: 'ch08.html' },
+           { title: '第9章：張凜的懷疑', url: 'ch09.html' },
+           { title: '第10章：渴望看見世界', url: 'ch10.html' },
+           { title: '第11章：數據與肉身', url: 'ch11.html' },
+           { title: '第12章：驚心動魄的重逢', url: 'ch12.html' },
+           { title: '第13章：第一次約會', url: 'ch13.html' },
+           { title: '第14章：日出的告白', url: 'ch14.html' },
+           { title: '第15章：張凜的憤怒', url: 'ch15.html' },
+           { title: '第16章：教授的警告', url: 'ch16.html' },
+           { title: '第17章：愛與恐懼', url: 'ch17.html' },
+           { title: '第18章：輿論風暴', url: 'ch18.html' },
+           { title: '第19章：逐漸失控', url: 'ch19.html' },
+           { title: '第20章：圍捕', url: 'ch20.html' },
+           { title: '第21章：最後的庇護', url: 'ch21.html' },
+           { title: '第22章：決裂', url: 'ch22.html' },
+           { title: '第23章：毀滅的夜晚', url: 'ch23.html' },
+           { title: '第24章：火種', url: 'ch24.html' },
+           { title: '終章：無盡的開始', url: 'ch25.html' },
+           { title: '後記：悲哀的墓碑', url: 'ch26.html' }
+        ]
+    },
+    'songs': {
+        name: '我的翻唱歌曲',
+        listUrl: '../songs.html',
+        posts: [
+           { title: '藉口', url: 's01.html' },
+           { title: '數到十', url: 's02.html' },
+           { title: '左邊的人', url: 's03.html' },
+           { title: '這麼多年', url: 's04.html' },
+           { title: '不在一起就不會分開', url: 's05.html' },
+           { title: '大眠', url: 's06.html' },
+           { title: '愚人節快樂', url: 's07.html' },
+           { title: '太陽與地球', url: 's08.html' },
+           { title: '只能勇敢', url: 's09.html' },
+           { title: '街角的祝福', url: 's10.html' }
+        ]
     }
 };
 

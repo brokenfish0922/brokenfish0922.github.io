@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>破魚的創作小天地</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome (請自行獲取最新版CDN或本地引入) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- 播放清單樣式 -->
+
+<style>
+
+.playlist {
+
+max-width: 600px;
+
+margin: 30px auto;
+
+padding: 20px;
+
+border-radius: 12px;
+
+background: linear-gradient(135deg,#f0f4ff,#fafafa);
+
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+font-family: Arial, sans-serif;
+
+}
+
+.playlist h2 {
+
+text-align: center;
+
+margin: 0 0 20px;
+
+color: #333;
+
+}
+
+.song {
+
+display: flex;
+
+align-items: center;
+
+padding: 10px 15px;
+
+border-radius: 8px;
+
+background: #fff;
+
+margin-bottom: 12px;
+
+transition: background 0.3s;
+
+}
+
+.song:hover {
+
+background: #e6f0ff; /* hover 效果 */
+
+}
+
+.song.active {
+
+background: #cce0ff; /* 播放中高亮 */
+
+}
+
+.song span {
+
+width: 30px;
+
+font-weight: bold;
+
+color: #666;
+
+}
+
+.song-info {
+
+flex: 1;
+
+}
+
+.song-info p {
+
+margin: 0;
+
+}
+
+.song-info p:first-child {
+
+font-weight: bold;
+
+color: #222;
+
+}
+
+.song-info p:last-child {
+
+font-size: 13px;
+
+color: #666;
+
+}
+
+.song audio {
+
+width: 100%;
+
+margin-top: 5px;
+
+}
+
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="../creation.html" class="logo">
+            <i class="fas fa-map-signs"></i> 破魚的創作小天地
+        </a>
+        <nav class="main-nav">
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul>
+                <li><a href="../creation.html">首頁</a></li>
+
+                <li><a href="../contact2.html">聯絡我</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container section-padding">
+  <!-- 麵包屑導覽 -->
+
+    <article class="single-post-content novel-chapter" data-category-id="songs" data-post-id="s02.html">
+        <header class="post-header">
+
+            <div class="post-meta">
+                <span><i class="far fa-calendar-alt"></i> 2025年10月11日</span>
+                <span><i class="fas fa-user"></i> 破魚</span>
+
+
+            </div>
+
+        </header>
+
+<!-- 播放清單區塊 -->
+
+<div class="playlist">
+
+<h2>🎶 數到十</h2>
+
+<div class="song">
+
+
+
+<div class="song-info">
+
+
+
+<audio controls>
+
+<source src="../images/02.m4a" type="audio/mpeg">
+
+你的瀏覽器不支援音訊播放
+
+</audio>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+const songs = document.querySelectorAll('.song audio');
+
+songs.forEach(audio => {
+
+audio.addEventListener('play', () => {
+
+// 停止其他歌曲
+
+songs.forEach(other => {
+
+if (other !== audio) {
+
+other.pause();
+
+}
+
+});
+
+// 清除所有 active 樣式
+
+document.querySelectorAll('.song').forEach(s => s.classList.remove('active'));
+
+// 標記目前播放中的歌曲
+
+audio.closest('.song').classList.add('active');
+
+});
+
+audio.addEventListener('pause', () => {
+
+audio.closest('.song').classList.remove('active');
+
+});
+
+});
+
+
+
+
+</script>
+
+<p>優雅的蝴蝶 自由穿梭在花蕊</p>
+<p>沉默的落葉 風來了就要道別</p>
+<p>不同的世界 沒有錯與對</p>
+<p>人有各自的終點</p>
+<p>你看不見 心酸那些</p><br>
+<p>天亮了又黑 愛走了才又後悔</p>
+<p>我們都在學 每天都勇敢一點</p>
+<p>在這個人間 路過了傷悲</p>
+<p>距離幸福就不遠</p>
+<p>抬頭讓陽光 曬乾我的淚</p><br>
+<p>愛上 一個人 兩顆心 三分想念</p>
+<p>四刷過 五月天 倒數跨年</p>
+<p>當愛碎成了白雪 六出紛飛</p>
+<p>錯過一個人 兩顆心 單身三年</p>
+<p>七月的 第八天 分手紀念</p>
+<p>那時的我們說了九次再見</p>
+<p>十分 懷念</p><br>
+<p>天亮了又黑 愛走了才又後悔</p>
+<p>我們都在學 每天都勇敢一點</p>
+<p>在這個人間 路過了傷悲</p>
+<p>距離幸福就不遠</p>
+<p>抬頭讓陽光曬乾我的淚</p><br>
+<p>愛上 一個人 兩顆心 三分想念</p>
+<p>四刷過 五月天 倒數跨年</p>
+<p>當愛碎成了白雪 六出紛飛</p>
+<p>錯過一個人 兩顆心 單身三年</p>
+<p>七月的 第八天 分手紀念</p>
+<p>那時的我們說了九次再見</p>
+<p>十分 懷念</p><br>
+<p>愛上 一個人 兩顆心 三分想念</p>
+<p>四刷過 五月天 倒數跨年</p>
+<p>當愛碎成了白雪 六出紛飛</p>
+<p>錯過 一個人 兩顆心 單身三年</p>
+<p>七月的 第八天 分手紀念</p>
+<p>那時的我們說了九次再見</p>
+<p>十分懷念 十分感謝</p>
+
+    </article>
+    <nav class="post-navigation" aria-label="文章導覽">
+        <!-- 這個區塊將由 JavaScript 動態填入內容 -->
+    </nav>
+    <!-- Related Posts (可選) -->
+<!--    <section class="related-posts">
+        <h2>相關文章</h2>
+        <div class="posts-grid"> -->
+            <!-- ...類似首頁的 Post Card 結構 ... -->
+        </div>
+    </section>
+
+    <!-- Comments Section (WordPress 會處理這部分) -->
+<section id="comments">
+  <h2>留言板</h2>
+  <form id="commentForm">
+    <input type="text" id="name" placeholder="暱稱" required>
+    <textarea id="message" placeholder="分享你的想法..." required></textarea>
+    <button type="submit">送出留言</button>
+  </form>
+
+  <div id="commentList"></div>
+</section>
+
+
+
+
+</main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 破魚的創作小天地. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/brokenfish7/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/brokenfish7?igsh=MTg4bDdlM21pcTNsbQ==" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="../creation.html" aria-label="Youtube"><i class="fas fa-music"></i></a>
+                </div>
+            </div>
+            <button id="backToTopBtn" title="回到頂部"><i class="fas fa-arrow-up"></i></button>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

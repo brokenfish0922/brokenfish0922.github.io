@@ -2179,3 +2179,119 @@ footer {
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
 }
+
+/* --- 小說章節目錄 --- */
+.chapter-index-container {
+    margin-top: 2.5em; /* 與上方圖片的間距 */
+    margin-bottom: 2.5em;
+    padding: 25px 30px;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.chapter-index-container h2 {
+    text-align: center;
+    color: #4682B4; /* 沿用 H2 標題顏色 */
+    margin-bottom: 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.chapter-index-container h2 i {
+    margin-right: 10px;
+    color: var(--primary-blue);
+}
+
+.chapter-grid {
+    display: grid;
+    /* 建立一個響應式網格：
+       - 每個欄位最小 280px，最大會自動填滿剩餘空間。
+       - 隨著螢幕寬度變化，會自動調整欄位數量。
+    */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px; /* 項目之間的間距 */
+}
+
+.chapter-link {
+    display: block;
+    padding: 12px 18px;
+    background-color: #f8f9fa; /* 淡灰色背景 */
+    color: var(--text-dark);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    text-align: center;
+    font-family: var(--font-primary);
+}
+
+.chapter-link:hover {
+    background-color: var(--accent-coral);
+    color: var(--white);
+    border-color: #E57373;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* --- 小說章節閱讀體驗優化 --- */
+
+/* 1. 為文章區塊設定更舒適的閱讀寬度與留白 */
+.single-post-content.novel-chapter {
+    max-width: 820px; /* 設定最大寬度，避免在寬螢幕上文字行過長，影響閱讀 */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px 60px; /* 增加上下和左右的內部留白，創造呼吸感 */
+    border: 1px solid #e9ecef; /* 新增一個非常細緻的邊框，提升質感 */
+}
+
+/* 2. 優化內文排版，提升易讀性 */
+.single-post-content.novel-chapter p,
+.single-post-content.novel-chapter { /* 同時應用於使用<br>的舊格式 */
+    font-size: 1.1rem; /* 稍微加大字體，長時間閱讀更舒適 */
+    line-height: 1.9; /* 明顯增加行高，讓文字不再擁擠 */
+    color: #2c3e50; /* 使用更柔和的深藍灰色，取代純黑色，降低眼睛疲勞 */
+    margin-bottom: 1.6em; /* 統一且加大的段落間距 */
+    text-align: justify; /* 文字左右對齊，更具書本的正式感 */
+    letter-spacing: 0.5px; /* 微調字間距 */
+}
+
+/* 3. 強化章節標題的視覺效果 */
+.single-post-content.novel-chapter .post-header {
+    text-align: left; /* 將標題區塊改為靠左對齊，更符合閱讀習慣 */
+    margin-bottom: 40px; /* 拉開與內文的距離 */
+    padding-bottom: 25px;
+}
+
+.single-post-content.novel-chapter .post-header h1 {
+    font-size: 2.6em; /* 讓標題更醒目 */
+    margin-bottom: 0.6em;
+}
+
+.single-post-content.novel-chapter .post-meta {
+    justify-content: flex-start; /* 將作者、日期等資訊也靠左對齊 */
+}
+
+/* 4. 美化內文中被<strong>標籤強調的句子 */
+.single-post-content.novel-chapter strong {
+    font-weight: 600;
+    color: var(--darker-blue); /* 使用您主題中的 SkyBlue，使其在內文中突出但不刺眼 */
+}
+
+/* 5. 針對手機版進行響應式調整 */
+@media (max-width: 768px) {
+    .single-post-content.novel-chapter {
+        padding: 30px 25px; /* 在手機上減少左右留白 */
+    }
+
+    .single-post-content.novel-chapter p,
+    .single-post-content.novel-chapter {
+        font-size: 1.05rem; /* 手機字體稍小一些 */
+        text-align: left; /* 在小螢幕取消左右對齊，避免單字間距過大 */
+    }
+
+    .single-post-content.novel-chapter .post-header h1 {
+        font-size: 2.1em;
+    }
+}
